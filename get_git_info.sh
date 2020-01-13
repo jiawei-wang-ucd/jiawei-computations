@@ -16,21 +16,30 @@ function parse_git_hash() {
 }
 
 # DEMO
-echo "Git current branch and commit of the repository and submodules" > "git_branch_commit_info"
+echo "Git current branch and commit of the repository and submodules" > "./system_info/git_branch_commit_info"
+echo "Git current branch and commit of the repository and submodules" > "./jiawei-computational-results/git_branch_commit_info"
 
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
-echo "\njiawei-computation" >> "git_branch_commit_info"
-echo ${GIT_BRANCH} >> "git_branch_commit_info"
+echo "\njiawei-computation" >> "./system_info/git_branch_commit_info"
+echo ${GIT_BRANCH} >> "./system_info/git_branch_commit_info"
 
 cd jiawei-computational-results
 
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
-echo "\njiawei-computation-results" >> "../git_branch_commit_info"
-echo ${GIT_BRANCH} >> "../git_branch_commit_info"
+echo "\njiawei-computation-results" >> "../system_info/git_branch_commit_info"
+echo ${GIT_BRANCH} >> "../system_info/git_branch_commit_info"
+
+GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
+echo "\njiawei-computation-results" >> "git_branch_commit_info"
+echo ${GIT_BRANCH} >> "git_branch_commit_info"
 
 cd cutgeneratingfunctionology
 
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
-echo "\ncutgeneratingfunctionology" >> "../../git_branch_commit_info"
-echo ${GIT_BRANCH} >> "../../git_branch_commit_info"
+echo "\ncutgeneratingfunctionology" >> "../../system_info/git_branch_commit_info"
+echo ${GIT_BRANCH} >> "../../system_info/git_branch_commit_info"
+
+GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
+echo "\ncutgeneratingfunctionology" >> "../git_branch_commit_info"
+echo ${GIT_BRANCH} >> "../git_branch_commit_info"
 

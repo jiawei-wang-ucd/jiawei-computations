@@ -11,7 +11,7 @@ if task_id:
 print("Sage hello from task {}".format(task_id))
 
 import sys
-sys.path.append(os.path.join(os.getcwd(), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *
 
 load('test_functions.sage')

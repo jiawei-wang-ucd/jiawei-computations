@@ -5,7 +5,7 @@ import resource; from resource import getrusage as resource_usage, RUSAGE_SELF
 from time import time as timestamp
 
 
-sys.path.append(os.path.join(os.getcwd(), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *
 
 def measure_time_resource(function, args=tuple(), kwargs={}):

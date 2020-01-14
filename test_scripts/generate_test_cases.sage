@@ -1,5 +1,4 @@
 import os, sys
-import csv
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *

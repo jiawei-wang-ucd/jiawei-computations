@@ -4,7 +4,7 @@ import sys
 import resource; from resource import getrusage as resource_usage, RUSAGE_SELF
 from time import time as timestamp
 
-sys.path.append(os.path.join(os.getcwd(), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
+#sys.path.append(os.path.join(os.getcwd(), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *
 
 

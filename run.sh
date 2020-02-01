@@ -7,7 +7,7 @@ source ./path.env
 sh get_git_info.sh
 
 # generate test_cases
-sage ./test_scripts/generate_test_cases
+sage ./test_scripts/generate_test_cases.sage
 
 # determine submodule branch/algorithm
 sbatch  ./test_scripts/SLURM-faster-subadditivity-test.sage

@@ -10,7 +10,7 @@ sh get_git_info.sh
 sage ./scripts/generate_test_cases.sage
 
 # submit jobs
-sbatch  ./scripts/SLURM-faster-subadditivity-test.sage
+sbatch -t 01:00:00 ./scripts/SLURM-faster-subadditivity-test.sage
 
 # generate plots
 

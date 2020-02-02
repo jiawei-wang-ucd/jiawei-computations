@@ -1,5 +1,41 @@
 import numpy as np
 import pandas as pd
+import scipy.stats; from scipy.stats import sem, t, kurtosis, kurtosistest, skew
+
+
+np.random.seed(9001)
+
+def bootstrap_CI(l, N=10000, alpha=0.95):
+    """
+    Compute the confidence interval of the sample mean using bootstrap.
+    """
+    mean_list = [mean(np.random.choice(l,len(l),replace=True)) for i in xrange(N)]
+    return np.percentile(mean_list,(1-alpha)/2*100), np.percentile(mean_list,(1+alpha)/2*100)
+
+def t_distribution_CI(l, alpha=0.95):
+    """
+    Compute the confidence interval of the sample mean using t distribution.
+    """
+    n = len(l)
+    m = mean(l)
+    std_err = sem(l)
+    h = std_err * t.ppf((1 + alpha) / 2, n - 1)
+    return m-h, m+h
+
+def sample_skew(l):
+    return skew(l)
+
+def sample_kurtosis(l):
+    return kurtosis(l)
+
+def kurtosis_test_p_value(l):
+    """
+    Hypothesis test to compute the p value under the null hypothesis that the samples are drawn from a normal distribution.
+    """
+    if len(l)<20:
+        raise ValueError("Not enough data")
+    res = kurtosistest(l)
+    return res.pvalue
 
 def plot_scatter(result_csv_file,input_file_path, solver1, solver2,subadditivity_only=False,log_plot=True):
     """

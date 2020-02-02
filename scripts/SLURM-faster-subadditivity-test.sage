@@ -33,7 +33,7 @@ sys.stdout.flush()
 fn = load(input_file_name)
 kwargs = branch_parameter_dictionary[git_branch('../jiawei-computational-results')]
 
-report_performance(function, result_file_name, iterations=30, args=[fn], kwargs = kwargs)
+report_performance(minimum_of_delta_pi, result_file_name, iterations=30, args=[fn], kwargs = kwargs)
 
 
 

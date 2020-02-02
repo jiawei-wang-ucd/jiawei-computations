@@ -1,5 +1,6 @@
 import gc
 import sys
+import csv
 
 import resource; from resource import getrusage as resource_usage, RUSAGE_SELF
 from time import time as timestamp

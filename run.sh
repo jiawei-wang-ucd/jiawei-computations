@@ -12,5 +12,3 @@ sage ./scripts/generate_test_cases.sage
 # submit jobs
 sbatch -t 01:00:00 ./scripts/SLURM-faster-subadditivity-test.sage
 
-# generate plots
-

@@ -23,14 +23,18 @@ GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
 echo "\njiawei-computation" >> "./system_info/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "./system_info/git_branch_commit_info"
 
+GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
+echo "\njiawei-computation" >> "./jiawei-computational-results/git_branch_commit_info"
+echo ${GIT_BRANCH} >> "./jiawei-computational-results/git_branch_commit_info"
+
 cd jiawei-computational-results
 
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
-echo "\njiawei-computation-results" >> "../system_info/git_branch_commit_info"
+echo "\njiawei-computational-results" >> "../system_info/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "../system_info/git_branch_commit_info"
 
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
-echo "\njiawei-computation-results" >> "git_branch_commit_info"
+echo "\njiawei-computational-results" >> "git_branch_commit_info"
 echo ${GIT_BRANCH} >> "git_branch_commit_info"
 
 cd cutgeneratingfunctionology

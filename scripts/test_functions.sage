@@ -33,7 +33,7 @@ def report_performance(function, file_name, iterations, args=tuple(), kwargs={})
         performance_table = csv.writer(writefile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         performance_table.writerow(['walltime(s)','cputime(s)','systime(s)','usertime(s)','memory(GB)'])
         writefile.flush()
-        for i in xrange(iterations):
+        for i in range(iterations):
             res = measure_time_resource(function, args=args, kwargs=kwargs)
             performance_table.writerow([res['real'], res['cpu'], res['sys'], res['user'], res['mem']])
             del res

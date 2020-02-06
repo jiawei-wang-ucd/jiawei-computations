@@ -36,6 +36,7 @@ def report_performance(function, file_name, iterations, args=tuple(), kwargs={})
         for i in range(iterations):
             res = measure_time_resource(function, args=args, kwargs=kwargs)
             performance_table.writerow([res['real'], res['cpu'], res['sys'], res['user'], res['mem']])
+            writefile.flush()
             del res
             gc.collect()
     writefile.close()

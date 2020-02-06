@@ -1,5 +1,5 @@
 #! /home/wangjw/sage/sage-9.0/sage
-#SBATCH --array=1-3
+#SBATCH --array=1-150
 #
 # --array: Specify the range of the array tasks.
 # --time: Acceptable time formats include "minutes", "minutes:seconds", "hours:minutes:seconds" etc.

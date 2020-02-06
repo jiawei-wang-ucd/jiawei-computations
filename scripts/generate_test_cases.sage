@@ -1,9 +1,9 @@
 import os, sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'jiawei-computational-results', 'cutgeneratingfunctionology'))
+sys.path.append(os.path.join(os.getcwd(), 'jiawei-computational-results', 'cutgeneratingfunctionology'))
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *
 
-test_library_write_path = os.path.dirname(__file__) + '/../jiawei-computational-results/test_cases_datatable/'
+test_library_write_path = os.getcwd() + '/jiawei-computational-results/test_cases_datatable/'
 
 test_function_dictionary={
 "1":'chen_4_slope',

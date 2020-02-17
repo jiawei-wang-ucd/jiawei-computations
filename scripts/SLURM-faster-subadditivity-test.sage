@@ -15,7 +15,7 @@ sys.path.append(os.path.join(os.getcwd(), 'jiawei-computational-results', 'cutge
 import cutgeneratingfunctionology.igp; from cutgeneratingfunctionology.igp import *
 
 load(os.path.join(os.getcwd(), 'scripts', 'test_functions.sage'))
-load(os.path.join(os.getcwd(), 'scripts', 'helper.sage'))
+load(os.path.join(os.getcwd(), 'jiawei-computational-results', 'helper.sage'))
 
 logging.disable(logging.INFO)
 
@@ -30,9 +30,8 @@ print('Output file:' + result_file_name)
 sys.stdout.flush()
 
 fn = load(input_file_name)
-kwargs = branch_parameter_dictionary[git_branch('./jiawei-computational-results')]
 
-report_performance(minimum_of_delta_pi, result_file_name, iterations=30, args=[fn], kwargs = kwargs)
+report_performance(minimum_of_delta_pi, result_file_name, iterations=30, args=[fn], kwargs = branch_parameters)
 
 
 

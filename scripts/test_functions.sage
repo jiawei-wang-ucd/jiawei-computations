@@ -53,7 +53,8 @@ def minimum_of_delta_pi(fn, method = 'branch_bound', search_method = 'DFS', lp_s
     elif method == 'mip':
         if not hasattr(fn, 'mip'):
             fn.mip = generate_mip_of_delta_pi_min_dlog(fn, solver = solver)
-        return fn.mip.solve()
+        p=copy(fn.mip)
+        return p.solve()
     else:
         raise ValueError
 

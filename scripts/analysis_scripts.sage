@@ -1,9 +1,26 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 import scipy.stats; from scipy.stats import sem, t, kurtosis, kurtosistest, skew
-
+from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
+
+def generate_plots_interval(x_values, y_values_upper, y_values_lower, y_values_mean, log_plot = False, **kwags):
+    if log_plot:
+        y_values_lower = [log(v) for v in y_values_lower]
+        y_values_upper = [log(v) for v in y_values_upper]
+        y_values_mean = [log(v) for v in y_values_mean]
+
+
+
+def shifted_geometric_mean(l, s):
+    """
+    Compute the shifted geometric mean of a list l with shift s.
+    """
+    if s<0:
+        raise ValueError("The shift s should not be negative.")
+    return gmean([v+s for v in l])-s
 
 def bootstrap_CI(l, N=10000, alpha=0.95):
     """

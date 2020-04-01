@@ -24,5 +24,5 @@ else
 fi
 
 # submit jobs
-sbatch -t 01:00:00 -n 4 --mem-per-cpu 8000 ./scripts/SLURM-faster-subadditivity-test.sage
+# sbatch -t 01:00:00 -n 4 --mem-per-cpu 8000 ./scripts/SLURM-faster-subadditivity-test.sage
 

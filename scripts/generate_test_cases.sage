@@ -113,3 +113,7 @@ for i in range(len(two_slope_function_family)):
     del minimal_fn_2slope
     del nonsub_fn_2slope
     gc.collect()
+
+# print summary
+n = len(base_function_family) + len(two_slope_function_family)
+print('There are in total %s test instances, including %s extreme functions, %s minimal but non extreme functions, and %s non subadditive functions.'%(3*n, n, n, n))

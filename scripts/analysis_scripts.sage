@@ -6,7 +6,32 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
-def generate_plot_confidence_interval_one_group(fname, x_values, y_mean, y_upper, y_lower, title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
+def generate_distribution_histogram_one_instance(fname, values, bins = 'rice', title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, **kwargs):
+    """
+    Generate and save a plot of the histogram of running time distribution.
+    The parameter bins represents the method to calculate optimal bin width.
+    The plot is stored in fname.
+    """
+    plt.hist(values, bins = bins, **kwargs)
+    if title_name is not None:
+        if title_size is not None:
+            plt.title(title_name, fontsize = title_size)
+        else:
+            plt.title(title_name)
+    if xlabel_name is not None:
+        if xlabel_size is not None:
+            plt.xlabel(xlabel_name, fontsize = xlabel_size)
+        else:
+            plt.xlabel(xlabel_name)
+    if ylabel_name is not None:
+        if ylabel_size is not None:
+            plt.ylabel(ylabel_name, fontsize = ylabel_size)
+        else:
+            plt.ylabel(ylabel_name)
+    plt.savefig(fname)
+    plt.close()
+
+def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
     """
     Generate and save a plot for visualizing confidence intervals of data in one group/algorithm.
     Each value in x_values represents one test instance, and y_mean, y_upper, y_lower represent the mean, lower and upper limit of confidence interval respectively.

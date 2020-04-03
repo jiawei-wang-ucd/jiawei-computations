@@ -18,7 +18,9 @@ def generate_plots_confidence_interval(fname, x_values, y_values_upper, y_values
     err_lower = [y_values_mean(i) - y_values_lower(i) for i in range(n)]
     err_upper = [y_values_upper(i) - y_values_mean(i) for i in range(n)]
 
-    plt.errorbar(x=x_1, y=y_1, yerr=[err_upper, err_lower], capsize=3, linestyle="None", marker="s", markersize=7, **kwags)
+    plt.errorbar(x=x_values, y=y_values_mean, yerr=[err_upper, err_lower], color="black", capsize=3, linestyle="None", marker="s", markersize=7, **kwags)
+
+    plt.savefig(fname)
 
 
 

@@ -6,11 +6,19 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
-def generate_plots_interval(x_values, y_values_upper, y_values_lower, y_values_mean, log_plot = False, **kwags):
+def generate_plots_confidence_interval(fname, x_values, y_values_upper, y_values_lower, y_values_mean, log_plot = False, **kwags):
+    n = len(x_values)
+    assert n == len(y_values_upper)
+    assert n == len(y_values_lower)
+    assert n == len(y_values_mean)
     if log_plot:
         y_values_lower = [log(v) for v in y_values_lower]
         y_values_upper = [log(v) for v in y_values_upper]
         y_values_mean = [log(v) for v in y_values_mean]
+    err_lower = [y_values_mean(i) - y_values_lower(i) for i in range(n)]
+    err_upper = [y_values_upper(i) - y_values_mean(i) for i in range(n)]
+
+    plt.errorbar(x=x_1, y=y_1, yerr=[err_upper, err_lower], capsize=3, linestyle="None", marker="s", markersize=7, **kwags)
 
 
 

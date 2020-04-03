@@ -6,23 +6,42 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
-def generate_plots_confidence_interval(fname, x_values, y_values_upper, y_values_lower, y_values_mean, log_plot = False, **kwags):
+def generate_plot_confidence_interval_one_group(fname, x_values, y_mean, y_upper, y_lower, title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
     n = len(x_values)
-    assert n == len(y_values_upper)
-    assert n == len(y_values_lower)
-    assert n == len(y_values_mean)
+    assert n == len(y_upper)
+    assert n == len(y_lower)
+    assert n == len(y_mean)
+    y_values_lower = copy(y_lower)
+    y_values_upper = copy(y_upper)
+    y_values_mean = copy(y_mean)
     if log_plot:
-        y_values_lower = [log(v) for v in y_values_lower]
-        y_values_upper = [log(v) for v in y_values_upper]
-        y_values_mean = [log(v) for v in y_values_mean]
-    err_lower = [y_values_mean(i) - y_values_lower(i) for i in range(n)]
-    err_upper = [y_values_upper(i) - y_values_mean(i) for i in range(n)]
+        y_values_lower = [float(log(v)) for v in y_values_lower]
+        y_values_upper = [float(log(v)) for v in y_values_upper]
+        y_values_mean = [float(log(v)) for v in y_values_mean]
+    err_lower = [y_values_mean[i] - y_values_lower[i] for i in range(n)]
+    err_upper = [y_values_upper[i] - y_values_mean[i] for i in range(n)]
 
-    plt.errorbar(x=x_values, y=y_values_mean, yerr=[err_upper, err_lower], color="black", capsize=3, linestyle="None", marker="s", markersize=7, **kwags)
-
+    plt.errorbar(x=x_values, y=y_values_mean, yerr=[err_upper, err_lower], color="black", capsize=3, linestyle="None", marker="s", markersize=3, **kwargs)
+    if x_ticks is not None:
+        assert n == len(x_ticks)
+        plt.xticks(x_values, x_ticks)
+    if title_name is not None:
+        if title_size is not None:
+            plt.title(title_name, fontsize = title_size)
+        else:
+            plt.title(title_name)
+    if xlabel_name is not None:
+        if xlabel_size is not None:
+            plt.xlabel(xlabel_name, fontsize = xlabel_size)
+        else:
+            plt.xlabel(xlabel_name)
+    if ylabel_name is not None:
+        if ylabel_size is not None:
+            plt.ylabel(ylabel_name, fontsize = ylabel_size)
+        else:
+            plt.ylabel(ylabel_name)
     plt.savefig(fname)
-
-
+    plt.close()
 
 def shifted_geometric_mean(l, s):
     """

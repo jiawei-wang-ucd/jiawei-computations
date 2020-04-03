@@ -7,6 +7,11 @@ from scipy.stats.mstats import gmean
 np.random.seed(9001)
 
 def generate_plot_confidence_interval_one_group(fname, x_values, y_mean, y_upper, y_lower, title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
+    """
+    Generate and save a plot for visualizing confidence intervals of data in one group/algorithm.
+    Each value in x_values represents one test instance, and y_mean, y_upper, y_lower represent the mean, lower and upper limit of confidence interval respectively.
+    The plot is stored in fname.
+    """
     n = len(x_values)
     assert n == len(y_upper)
     assert n == len(y_lower)

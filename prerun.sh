@@ -13,9 +13,6 @@ else
   mkdir ./jiawei-computational-results/test_cases_datatable/
 fi
 
-# generate test_cases
-sage ./scripts/generate_test_cases.sage
-
 # clear results folder
 if [[ -d ./jiawei-computational-results/results_datatable ]]; then
   rm -f ./jiawei-computational-results/results_datatable/*
@@ -24,5 +21,5 @@ else
 fi
 
 # submit jobs
-# sbatch -t 01:00:00 -n 4 --mem-per-cpu 8000 ./scripts/SLURM-faster-subadditivity-test.sage
+# sbatch --array=1-150 -t 01:00:00 -n 4 --mem-per-cpu 8000 ./scripts/SLURM-faster-subadditivity-test.sage
 

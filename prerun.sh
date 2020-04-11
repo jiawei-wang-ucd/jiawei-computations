@@ -23,3 +23,5 @@ fi
 # submit jobs
 # sbatch --array=1-150 -t 01:00:00 -n 4 --mem-per-cpu 8000 ./scripts/SLURM-faster-subadditivity-test.sage
 
+# submit jobs sample
+sbatch 

@@ -17,6 +17,8 @@ Contribution and feedback are very welcome!
 ## Prerequisite package 
 
 - The python-based software [SageMath](https://www.sagemath.org/) needs to be installed in the HPC.
+- The experiment will utilize optimization solvers to solve LPs and MIPs. Those solvers (like cbc or cplex) should be made callable by 
+[MixedIntegerLinearProgram](http://doc.sagemath.org/html/en/reference/numerical/sage/numerical/mip) in [SageMath](https://www.sagemath.org/).
 
 ## Reproduce
 

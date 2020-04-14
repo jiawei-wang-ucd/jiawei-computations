@@ -7,7 +7,7 @@ source ./path.env
 sh ./scripts/get_git_info.sh
 
 # store cpu info
-sage ./scripts/get_cpuinfo.sage
+sage ./jiawei-computational-results/prerun.sage
 
 # clear results folder
 for p in ./jiawei-computational-results/results_datatable/*; do

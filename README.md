@@ -37,5 +37,10 @@ sh prerun.sh
 ```
 sbatch --array=1-1500 --time 01:00:00 -n 4 --mem-per-cpu 8000 SLURM-computation.sage
 ```
+- (to do) clear log files after all computations are done (which could takes several days depending on the expriment scale and computation priority).
+```
+sh clean_logs.sh
+```
+- use git to stage and commit results files created in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results).
 
 ## Acknowledgement 

@@ -33,9 +33,9 @@ sh regenerate_test_instances.sh
 sh prerun.sh
 ```
 - edit the first line of the file `SLURM-computation.sage` to specify the path of the executable sage in the HPC.
-- submit jobs to the cluster using `SLURM-computation.sage`, and specify parameters, including the number of jobs, time limit, memory. For example, the follow command will submit 1500 jobs to the cluster, and each job request 4 nodes and 8000MB per CPU for the computation with 1 hour time limit.
+- submit jobs to the cluster using `SLURM-computation.sage`, and specify parameters, including the number of jobs, time limit, memory. For example, the following command will submit 1500 jobs to the cluster, and each job request 4 nodes and 8000MB per CPU for the computation with 1 hour time limit.
 ```
-sbatch --array=1-1500 -t 01:00:00 -n 4 --mem-per-cpu 8000 SLURM-computation.sage
+sbatch --array=1-1500 --time 01:00:00 -n 4 --mem-per-cpu 8000 SLURM-computation.sage
 ```
 
 ## Acknowledgement 

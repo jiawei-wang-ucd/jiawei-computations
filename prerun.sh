@@ -17,5 +17,6 @@ for p in ./jiawei-computational-results/results_datatable/*; do
 done
 
 # ready to submit jobs, print instructions
-echo "It is ready to submit jobs to the cluster. Remeber to specify parameters; the number of jobs and time limit must be provided, other parameters are optional. For example:"
+echo "Before submit jobs to the cluster, make sure to edit the first line of the file SLURM-computation.sage to specify the path of the executable sage."
+echo "Submit jobs to the cluster using the file SLURM-computation.sage. Remeber to specify parameters; the number of jobs and time limit must be provided, other parameters are optional. For example:"
 echo "sbatch --array=1-1650 --time 01:00:00 SLURM-computation.sage"

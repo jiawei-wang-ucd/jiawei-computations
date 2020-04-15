@@ -7,6 +7,7 @@ Contribution and feedback are very welcome!
 ## Structure
 
 - The scripts of the reproducible benchmarking work are stored in [scripts](https://github.com/mkoeppe/jiawei-computations/tree/master/scripts) folder.
+- The test instances are stored in the [test_instances](https://github.com/mkoeppe/jiawei-computations/tree/master/test_instances) folder. The folder contains a file [test_instances_info.csv](https://github.com/mkoeppe/jiawei-computations/tree/master/test_instances/test_instances_info.csv) which explaines how each instance is generated. Note that not all test instances may be used in the experiment. For example, we do not include non subadditive functions in the experiment of generating additive faces. 
 - The computational results are stored in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results). The branch name of the submodule specifies the computational task. So far there are four computational tasks. See how the branch name represents the computational task as below.
 * delta_pi_minimum - computation of the minimum of delta pi.
 * delta_pi_objective_zero - verification of the delta pi reaching the objective limit 0.

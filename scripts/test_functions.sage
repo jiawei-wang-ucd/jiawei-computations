@@ -41,7 +41,37 @@ def report_performance(function, file_name, iterations, args=tuple(), kwargs={})
             gc.collect()
     writefile.close()
 
+def is_objective_goal_reached_zero(fn, **kwargs):
+    """
+    Return if delta_pi of fn can reach goal zero. Algorithm is based on the parameters.
+    """
+    is_objective_goal_reached(fn, goal = QQ(0), **kwargs)
+
+def is_objective_goal_reached_one_percent(fn, **kwargs):
+    """
+    Return if delta_pi of fn can reach goal -0.01. Algorithm is based on the parameters.
+    """
+    is_objective_goal_reached(fn, goal = -QQ(1/100), **kwargs)
+
+def is_objective_goal_reached(fn, goal, method = 'branch_bound', search_method = 'DFS', lp_size = 0, solver = 'Coin'):
+    """
+    Return if delta_pi of fn can reach goal. Algorithm is based on the parameters.
+    """
+    if method == 'naive':
+        return is_objective_goal_reached_naive(fn = fn, goal = goal)
+    elif method == 'branch_bound':
+        T = SubadditivityTestTree(fn, objective_limit = goal)
+        is_sub = T.is_subadditive(stop_if_fail = True, cache_additive_vertices = False, search_method = search_method, max_number_of_bkpts = lp_size, solver = solver)
+        del T
+        gc.collect()
+        return is_sub
+    else:
+        raise ValueError
+
 def minimum_of_delta_pi(fn, method = 'branch_bound', search_method = 'DFS', lp_size = 0, solver = 'Coin'):
+    """
+    Return the minimum of delta pi. Algorithm is based on the parameters.
+    """
     if method == 'naive':
         return minimum_of_delta_pi_naive(fn)
     elif method == 'branch_bound':
@@ -84,6 +114,32 @@ def minimum_of_delta_pi_naive(fn):
             if delta<global_min:
                 global_min=delta
     return global_min
+
+def is_objective_goal_reached_naive(fn, goal = 0):
+    """
+    Return if delta_pi of fn can reach goal, using the naive algorithm. (Quatratic complexity)
+    """
+    for x in fn.end_points():
+        for y in fn.end_points():
+            if y<x:
+                continue
+            delta=delta_pi(fn,x,y)
+            if delta<goal:
+                return False
+    for z in fn.end_points():
+        for x in fn.end_points():
+            y=z-x
+            delta=delta_pi(fn,x,y)
+            if delta<goal:
+                return False
+    for z in fn.end_points():
+        for x in fn.end_points():
+            z=1+z
+            y=z-x
+            delta=delta_pi(fn,x,y)
+            if delta<goal:
+                return False
+    return True
 
 def generate_mip_of_delta_pi_min_dlog(fn,solver='Coin'):
     """

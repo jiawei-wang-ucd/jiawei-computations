@@ -1,7 +1,10 @@
 Git current branch and commit of the repository and submodules
-\njiawei-computation
-master*@b9fd77a
-\njiawei-computational-results
-delta_pi_minimum@12b1b07
-\ncutgeneratingfunctionology
-param_linear_backends@5e530c36
+
+jiawei-computation
+master*@92eaa37
+
+jiawei-computational-results
+delta_pi_minimum*@74c224b
+
+cutgeneratingfunctionology
+param_linear_backends@35c66ef7

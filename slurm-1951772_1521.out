@@ -1,8 +1,0 @@
-==========================================
-SLURM_JOB_ID = 1954156
-SLURM_NODELIST = c5-78
-CUDA_VISIBLE_DEVICES = 
-==========================================
-Sage hello from task 1521
-Input file:/home/wangjw/jiawei-computations/test_instances/extreme_functions/extreme_29.sobj
-Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/mip_solver/extreme_29.csv

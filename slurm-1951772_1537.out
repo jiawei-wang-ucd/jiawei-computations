@@ -1,9 +1,0 @@
-==========================================
-SLURM_JOB_ID = 1954172
-SLURM_NODELIST = c5-78
-CUDA_VISIBLE_DEVICES = 
-==========================================
-Sage hello from task 1537
-Input file:/home/wangjw/jiawei-computations/test_instances/extreme_functions/extreme_43_2s.sobj
-Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/mip_solver/extreme_43_2s.csv
-slurmstepd: error: *** JOB 1954172 ON c5-78 CANCELLED AT 2020-04-19T10:47:43 DUE TO TIME LIMIT ***

@@ -1,9 +1,0 @@
-==========================================
-SLURM_JOB_ID = 1954220
-SLURM_NODELIST = c4-79
-CUDA_VISIBLE_DEVICES = 
-==========================================
-Sage hello from task 1583
-Input file:/home/wangjw/jiawei-computations/test_instances/minimal_functions/minimal_4.sobj
-Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/mip_solver/minimal_4.csv
-slurmstepd: error: *** JOB 1954220 ON c4-79 CANCELLED AT 2020-04-18T17:31:38 DUE TO TIME LIMIT ***

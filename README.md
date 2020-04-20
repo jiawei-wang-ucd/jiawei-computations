@@ -39,7 +39,15 @@ sh prerun.sh
 ```
 sbatch --array=1-1500 --time 01:00:00 -n 4 --mem-per-cpu 8000 SLURM-computation.sage
 ```
-- (to do) clear log files after all computations are done (which could takes several days depending on the expriment scale and computation priority).
+- (optional) monitor the status of jobs by using the following command.
+```
+squeue -u USER_NAME
+```
+It is possible that some jobs are suspended, and they can be requeued by using the following command.
+```
+scontrol requeue JOB_ID
+```
+- clear log files after all computations are done (which could takes several days depending on the expriment scale and computation priority).
 ```
 sh clean_logs.sh
 ```

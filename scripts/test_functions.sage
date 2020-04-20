@@ -41,6 +41,25 @@ def report_performance(function, file_name, iterations, args=tuple(), kwargs={})
             gc.collect()
     writefile.close()
 
+def maximal_additive_faces_generation(fn, method = 'branch_bound', search_method = 'DFS', lp_size = 0, solver = 'Coin'):
+    """
+    Return all maximal additive faces of a function fn. Algorithm is based on the parameters.
+    """
+    if method == 'naive':
+        fn2 = copy(fn)
+        max_add_faces = generate_maximal_additive_faces(fn2)
+        del fn2
+        gc.collect()
+        return max_add_faces
+    elif method == 'branch_bound':
+        T = SubadditivityTestTree(fn)
+        max_add_faces = T.generate_maximal_additive_faces(search_method = search_method, max_number_of_bkpts = lp_size, solver = solver)
+        del T
+        gc.collect()
+        return max_add_faces
+    else:
+        raise ValueError
+
 def is_objective_goal_reached_zero(fn, **kwargs):
     """
     Return if delta_pi of fn can reach goal zero. Algorithm is based on the parameters.

@@ -23,10 +23,10 @@ echo "Git current branch and commit of the repository and submodules" > "./jiawe
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
 echo "jiawei-computation:"${GIT_BRANCH}
 
-echo "\njiawei-computation" >> "./system_info/git_branch_commit_info"
+echo "jiawei-computation" >> "./system_info/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "./system_info/git_branch_commit_info"
 
-echo "\njiawei-computation" >> "./jiawei-computational-results/git_branch_commit_info"
+echo "jiawei-computation" >> "./jiawei-computational-results/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "./jiawei-computational-results/git_branch_commit_info"
 
 cd jiawei-computational-results
@@ -34,10 +34,10 @@ cd jiawei-computational-results
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
 echo "jiawei-computational-results:"${GIT_BRANCH}
 
-echo "\njiawei-computational-results" >> "../system_info/git_branch_commit_info"
+echo "jiawei-computational-results" >> "../system_info/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "../system_info/git_branch_commit_info"
 
-echo "\njiawei-computational-results" >> "git_branch_commit_info"
+echo "jiawei-computational-results" >> "git_branch_commit_info"
 echo ${GIT_BRANCH} >> "git_branch_commit_info"
 
 cd cutgeneratingfunctionology
@@ -45,8 +45,8 @@ cd cutgeneratingfunctionology
 GIT_BRANCH=$(parse_git_branch)$(parse_git_hash)
 echo "cutgeneratingfunctionology:"${GIT_BRANCH}
 
-echo "\ncutgeneratingfunctionology" >> "../../system_info/git_branch_commit_info"
+echo "cutgeneratingfunctionology" >> "../../system_info/git_branch_commit_info"
 echo ${GIT_BRANCH} >> "../../system_info/git_branch_commit_info"
 
-echo "\ncutgeneratingfunctionology" >> "../git_branch_commit_info"
+echo "cutgeneratingfunctionology" >> "../git_branch_commit_info"
 echo ${GIT_BRANCH} >> "../git_branch_commit_info"

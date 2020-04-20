@@ -1,0 +1,9 @@
+==========================================
+SLURM_JOB_ID = 1954238
+SLURM_NODELIST = c6-84
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 1601
+Input file:/home/wangjw/jiawei-computations/test_instances/non_subadditive_functions/nonsub_10.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/mip_solver/nonsub_10.csv
+slurmstepd: error: *** JOB 1954238 ON c6-84 CANCELLED AT 2020-04-18T17:56:08 DUE TO TIME LIMIT ***

@@ -1,0 +1,8 @@
+==========================================
+SLURM_JOB_ID = 1954128
+SLURM_NODELIST = c5-86
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 1494
+Input file:/home/wangjw/jiawei-computations/test_instances/non_subadditive_functions/nonsub_5.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/sbb_bb_mixed_bound/nonsub_5.csv

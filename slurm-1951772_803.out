@@ -1,0 +1,8 @@
+==========================================
+SLURM_JOB_ID = 1953311
+SLURM_NODELIST = c4-82
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 803
+Input file:/home/wangjw/jiawei-computations/test_instances/minimal_functions/minimal_12.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/sbb_dfs_mixed_bound/minimal_12.csv

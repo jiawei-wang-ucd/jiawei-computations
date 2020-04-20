@@ -1,0 +1,9 @@
+==========================================
+SLURM_JOB_ID = 1952246
+SLURM_NODELIST = c6-83
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 435
+Input file:/home/wangjw/jiawei-computations/test_instances/non_subadditive_functions/nonsub_41_2s.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/naive_computation/nonsub_41_2s.csv
+slurmstepd: error: *** JOB 1952246 ON c6-83 CANCELLED AT 2020-04-18T15:45:04 DUE TO TIME LIMIT ***

@@ -1,0 +1,9 @@
+==========================================
+SLURM_JOB_ID = 1953653
+SLURM_NODELIST = c4-88
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 1139
+Input file:/home/wangjw/jiawei-computations/test_instances/minimal_functions/minimal_45_2s.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/sbb_dfs_constant_bound/minimal_45_2s.csv
+slurmstepd: error: *** JOB 1953653 ON c4-88 CANCELLED AT 2020-04-17T08:11:37 DUE TO TIME LIMIT ***

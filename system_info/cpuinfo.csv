@@ -1,0 +1,20 @@
+python_version,3.7.3.final.0 (64 bit)
+cpuinfo_version,"[5, 0, 0]"
+arch,X86_64
+bits,64
+count,32
+raw_arch_string,x86_64
+vendor_id,GenuineIntel
+brand,Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
+hz_advertised,2.4000 GHz
+hz_actual,1.1978 GHz
+hz_advertised_raw,"[2400000000, 0]"
+hz_actual_raw,"[1197844000, 0]"
+stepping,2
+model,63
+family,6
+flags,"['abm', 'acpi', 'aes', 'aperfmperf', 'apic', 'arat', 'arch_perfmon', 'avx', 'avx2', 'bmi1', 'bmi2', 'bts', 'clflush', 'cmov', 'constant_tsc', 'cpuid', 'cpuid_fault', 'cqm', 'cqm_llc', 'cqm_occup_llc', 'cx16', 'cx8', 'dca', 'de', 'ds_cpl', 'dtes64', 'dtherm', 'dts', 'epb', 'ept', 'erms', 'est', 'f16c', 'flexpriority', 'flush_l1d', 'fma', 'fpu', 'fsgsbase', 'fxsr', 'ht', 'ibpb', 'ibrs', 'ida', 'intel_ppin', 'invpcid', 'invpcid_single', 'lahf_lm', 'lm', 'mca', 'mce', 'mmx', 'monitor', 'movbe', 'msr', 'mtrr', 'nonstop_tsc', 'nopl', 'nx', 'pae', 'pat', 'pbe', 'pcid', 'pclmulqdq', 'pdcm', 'pdpe1gb', 'pebs', 'pge', 'pln', 'pni', 'popcnt', 'pse', 'pse36', 'pti', 'pts', 'rdrand', 'rdtscp', 'rep_good', 'sdbg', 'sep', 'smep', 'smx', 'ss', 'ssbd', 'sse', 'sse2', 'sse4_1', 'sse4_2', 'ssse3', 'stibp', 'syscall', 'tm', 'tm2', 'tpr_shadow', 'tsc', 'tsc_adjust', 'tsc_deadline_timer', 'vme', 'vmx', 'vnmi', 'vpid', 'x2apic', 'xsave', 'xsaveopt', 'xtopology', 'xtpr']"
+l3_cache_size,20480 KB
+l2_cache_size,256 KB
+l1_data_cache_size,32 KB
+l1_instruction_cache_size,32 KB

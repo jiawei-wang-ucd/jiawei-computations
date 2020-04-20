@@ -1,0 +1,9 @@
+==========================================
+SLURM_JOB_ID = 1953398
+SLURM_NODELIST = c4-88
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 889
+Input file:/home/wangjw/jiawei-computations/test_instances/non_subadditive_functions/nonsub_45_2s.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/sbb_dfs_mixed_bound/nonsub_45_2s.csv
+slurmstepd: error: *** JOB 1953398 ON c4-88 CANCELLED AT 2020-04-17T03:11:41 DUE TO TIME LIMIT ***

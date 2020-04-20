@@ -1,0 +1,9 @@
+==========================================
+SLURM_JOB_ID = 1952286
+SLURM_NODELIST = c4-66
+CUDA_VISIBLE_DEVICES = 
+==========================================
+Sage hello from task 475
+Input file:/home/wangjw/jiawei-computations/test_instances/extreme_functions/extreme_32_2s.sobj
+Output file:/home/wangjw/jiawei-computations/jiawei-computational-results/results_datatable/sbb_bfs_lp_bound/extreme_32_2s.csv
+slurmstepd: error: *** JOB 1952286 ON c4-66 CANCELLED AT 2020-04-20T01:22:45 DUE TO TIME LIMIT ***

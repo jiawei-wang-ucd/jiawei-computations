@@ -1,20 +1,23 @@
-count,4
-extended_model,4
-l2_cache_line_size,6
-python_version,2.7.14.final.0 (64 bit)
-family,6
+python_version,3.7.3.final.0 (64 bit)
+cpuinfo_version,"[5, 0, 0]"
 arch,X86_64
-brand,Intel(R) Core(TM) i5-4308U CPU @ 2.80GHz
-vendor_id,GenuineIntel
-cpuinfo_version,"(4, 0, 0)"
-hz_actual,2.8000 GHz
-flags,"['1gbpage', 'abm', 'acpi', 'aes', 'apic', 'avx', 'avx1.0', 'avx2', 'bmi1', 'bmi2', 'clflush', 'clfsh', 'cmov', 'cx16', 'cx8', 'de', 'ds', 'ds_cpl', 'dscpl', 'dtes64', 'dts', 'em64t', 'erms', 'est', 'f16c', 'fma', 'fpu', 'fpu_csds', 'fxsr', 'ht', 'htt', 'ibrs', 'invpcid', 'l1df', 'lahf', 'lahf_lm', 'lzcnt', 'mca', 'mce', 'md_clear', 'mmx', 'mon', 'monitor', 'movbe', 'msr', 'mtrr', 'osxsave', 'pae', 'pat', 'pbe', 'pcid', 'pclmulqdq', 'pdcm', 'pge', 'pni', 'popcnt', 'pse', 'pse36', 'rdrand', 'rdrnd', 'rdtscp', 'rdwrfsgs', 'seglim64', 'sep', 'smep', 'ss', 'ssbd', 'sse', 'sse2', 'sse3', 'sse4.1', 'sse4.2', 'sse4_1', 'sse4_2', 'ssse3', 'stibp', 'syscall', 'tm', 'tm2', 'tpr', 'tsc', 'tsc_thread_offset', 'tscdeadline', 'tsci', 'tsctmr', 'vme', 'vmx', 'x2apic', 'xd', 'xsave', 'xtpr']"
-l2_cache_associativity,0x100L
-hz_actual_raw,"(2800000000, 0)"
-stepping,1
-raw_arch_string,x86_64
-model,69
 bits,64
-l2_cache_size,256
-hz_advertised_raw,"(2800000000, 0)"
-hz_advertised,2.8000 GHz
+count,32
+raw_arch_string,x86_64
+vendor_id,GenuineIntel
+brand,Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz
+hz_advertised,2.4000 GHz
+hz_actual,1.1981 GHz
+hz_advertised_raw,"[2400000000, 0]"
+hz_actual_raw,"[1198096000, 0]"
+stepping,2
+model,63
+family,6
+flags,"['abm', 'acpi', 'aes', 'aperfmperf', 'apic', 'arat', 'arch_perfmon', 'avx', 'avx2', 'bmi1', 'bmi2', 'bts', 'clflush', 'cmov', 'constant_tsc', 'cpuid', 'cpuid_fault', 'cqm', 'cqm_llc', 'cqm_occup_llc', 'cx16', 'cx8', 'dca', 'de', 'ds_cpl', 'dtes64', 'dtherm', 'dts', 'epb', 'ept', 'erms', 'est', 'f16c', 'flexpriority', 'flush_l1d', 'fma', 'fpu', 'fsgsbase', 'fxsr', 'ht', 'ibpb', 'ibrs', 'ida', 'intel_ppin', 'invpcid', 'invpcid_single', 'lahf_lm', 'lm', 'mca', 'mce', 'mmx', 'monitor', 'movbe', 'msr', 'mtrr', 'nonstop_tsc', 'nopl', 'nx', 'osxsave', 'pae', 'pat', 'pbe', 'pcid', 'pclmulqdq', 'pdcm', 'pdpe1gb', 'pebs', 'pge', 'pln', 'pni', 'popcnt', 'pqm', 'pse', 'pse36', 'pti', 'pts', 'rdrand', 'rdrnd', 'rdtscp', 'rep_good', 'sdbg', 'sep', 'smep', 'smx', 'ss', 'ssbd', 'sse', 'sse2', 'sse4_1', 'sse4_2', 'ssse3', 'stibp', 'syscall', 'tm', 'tm2', 'tpr_shadow', 'tsc', 'tsc_adjust', 'tsc_deadline_timer', 'tscdeadline', 'vme', 'vmx', 'vnmi', 'vpid', 'x2apic', 'xsave', 'xsaveopt', 'xtopology', 'xtpr']"
+l3_cache_size,20480 KB
+l2_cache_size,256 KB
+l1_data_cache_size,32 KB
+l1_instruction_cache_size,32 KB
+l2_cache_line_size,6
+l2_cache_associativity,0x100
+extended_model,3

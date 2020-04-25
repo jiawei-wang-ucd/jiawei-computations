@@ -9,3 +9,6 @@
 	path = computational-results-objective-one-percent
 	url = https://github.com/mkoeppe/jiawei-computational-results.git
 
+[submodule "computational-results-additive-faces"]
+	path = computational-results-additive-faces
+	url = https://github.com/mkoeppe/jiawei-computational-results.git

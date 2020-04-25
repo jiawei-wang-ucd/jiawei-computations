@@ -1,1 +1,13 @@
 
+[submodule "computational-results-minimum"]
+	path = computational-results-minimum
+	url = https://github.com/mkoeppe/jiawei-computational-results.git
+[submodule "computational-results-objective-zero"]
+	path = computational-results-objective-zero
+	url = https://github.com/mkoeppe/jiawei-computational-results.git
+[submodule "computational-results-objective-one-percent"]
+	path = computational-results-objective-one-percent
+	url = https://github.com/mkoeppe/jiawei-computational-results.git
+[submodule "computational-results-objective-additive-faces"]
+	path = computational-results-objective-additive-faces
+	url = https://github.com/mkoeppe/jiawei-computational-results.git

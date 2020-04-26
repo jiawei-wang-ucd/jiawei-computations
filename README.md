@@ -26,13 +26,14 @@ Contribution and feedback are very welcome!
 
 ## Reproduce
 
+- login to the cluster, git clone the repository and (nested) submodules, and cd to `jiawei-computations`.
 - edit the file `path.env` to specify the path of the executable sage in the HPC.
 - (optional) it is possible to regenerate all test instances using file `regenerate_test_instances.sh`.
 ```
 sh regenerate_test_instances.sh
 ```
-- choose one computational task and checkout the corresponding branch of the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results).
-- choose the version of submodule [cutgeneratingfunctionology](https://github.com/mkoeppe/cutgeneratingfunctionology) and checkout the branch/commit.
+- choose one computational task and checkout the corresponding branch of the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results) in the folder `jiawei-computational-results`.
+- choose the version of submodule [cutgeneratingfunctionology](https://github.com/mkoeppe/cutgeneratingfunctionology) in the folder `jiawei-computational-results/cutgeneratingfunctionology` and checkout the branch/commit.
 - run the file `prerun.sh`, and it will print out information about the experiment.
 ```
 sh prerun.sh
@@ -54,6 +55,11 @@ scontrol requeue JOB_ID
 ```
 sh clean_logs.sh
 ```
-- use git to stage and commit results files created in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results).
+- use git to stage and commit results files created in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results) in the folder `jiawei-computational-results`.
+
+## Data Analysis
+
+- We use computational results stored in `computational-results-*` folders. Make sure those folders/submodules are in the right commit for data analysis. 
+- We use Jupyter Note book to perform (interactive) data analysis using the file [data_analysis.ipynb](https://github.com/mkoeppe/jiawei-computations/tree/master/data_analysis.ipynb)
 
 ## Acknowledgement 

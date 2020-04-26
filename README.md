@@ -8,11 +8,11 @@ Contribution and feedback are very welcome!
 
 - The scripts of the reproducible benchmarking work are stored in [scripts](https://github.com/mkoeppe/jiawei-computations/tree/master/scripts) folder.
 - The test instances are stored in the [test_instances](https://github.com/mkoeppe/jiawei-computations/tree/master/test_instances) folder. The folder contains a file [test_instances_info.csv](https://github.com/mkoeppe/jiawei-computations/tree/master/test_instances/test_instances_info.csv) which explaines how each instance is generated. Note that not all test instances may be used in the experiment. For example, we do not include non subadditive functions in the experiment of generating additive faces. 
-- The computational results are stored in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results). The branch name of the submodule specifies the computational task. So far there are four computational tasks. See how the branch name represents the computational task as below.
-* delta_pi_minimum - computation of the minimum of delta pi, including all test instances.
-* delta_pi_objective_zero - verification of the delta pi reaching the objective limit 0, excluding non subadditive instances.
-* delta_pi_objective_one_percent - verification of the delta pi reaching the objective limit -0.01, including all test instances.
-* generate_additive_faces - generation of additive faces, excluding non subadditive faces.
+- The computational results are stored in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results). The branch name of the submodule specifies the computational task. We include different branches of the same submodule here as `computational-results-*` folders so that we can access all computational results in different computation tasks. So far there are four computational tasks. See how the branch name represents the computational task as below.
+* delta_pi_minimum - (computational-results-minimum) - computation of the minimum of delta pi, including all test instances.
+* delta_pi_objective_zero - (computational-results-objective-zero) - verification of the delta pi reaching the objective limit 0, excluding non subadditive instances.
+* delta_pi_objective_one_percent - (computational-results-objective-one-percent) - verification of the delta pi reaching the objective limit -0.01, including all test instances.
+* generate_additive_faces - (computational-results-additive-faces) - generation of additive faces, excluding non subadditive faces.
 - The source code and algorithms on cut generating functions are stored in the submodule [cutgeneratingfunctionology](https://github.com/mkoeppe/cutgeneratingfunctionology), which is contained in the submodule [jiawei-computational-results](https://github.com/mkoeppe/jiawei-computational-results). The branch of the submodule specifies the version of the cut generating function code in the experiment. 
 - The folder [system_info](https://github.com/mkoeppe/jiawei-computations/tree/master/system_info) stores the git branch/commit info of current reprositories and CPU info of the HPC used for the experiment.
 

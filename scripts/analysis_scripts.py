@@ -55,9 +55,8 @@ def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
                 values.append(max(temps))
             else:
                 raise ValueError
-    
-    df[alg] = values
-return df
+        df[alg] = values
+    return df
 
 def generate_distribution_histogram_one_instance(fname, values, bins = 'rice', title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, **kwargs):
     """

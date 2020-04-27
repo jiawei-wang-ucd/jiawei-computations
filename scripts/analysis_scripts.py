@@ -45,11 +45,15 @@ def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
                 raise ValueError
             
             # choose a type of statistics
-            if stats == 'mean':
+            if stats == 'arithmetic_mean':
                 values.append(np.mean(temps))
-            elif stats == 'bootstrap':
+            elif stats == 'mean_bootstrap':
+                values.append(np.mean(bootstrap_CI(temps)))
+            elif stats == 'CI_bootstrap':
                 values.append(bootstrap_CI(temps))
-            elif stats == 't_distribution':
+            elif stats == 'mean_t_distribution':
+                values.append(np.mean(t_distribution_CI(temps)))
+            elif stats == 'CI_t_distribution':
                 values.append(t_distribution_CI(temps))
             elif stats == 'max':
                 values.append(max(temps))

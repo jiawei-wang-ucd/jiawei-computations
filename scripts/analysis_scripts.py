@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,6 +6,58 @@ import scipy.stats; from scipy.stats import sem, t, kurtosis, kurtosistest, skew
 from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
+
+def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
+    """
+    Generate a data frame which reports cpu time or memory for one computation task.
+    """
+    df = pd.DataFrame()
+    algorithms = os.listdir(path)
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    for alg in algorithms:
+        values = []
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 0:
+                if metric == 'time':
+                    values.append(time_out)
+                elif metric == 'memory':
+                    values.append('TimeOut')
+                else:
+                    raise ValueError
+                continue
+            if temp_df.shape[0] == 1:
+                if metric == 'time':
+                    values.append(temp_df['cputime(s)'][0])
+                elif metric == 'memory':
+                    values.append(temp_df['memory(GB)'][0])
+                else:
+                    raise ValueError
+                continue
+            # choose time or memory
+            if metric == 'time':
+                temps = temp_df['cputime(s)']
+            elif metric == 'memory':
+                temps = temp_df['memory(GB)']
+            else:
+                raise ValueError
+            
+            # choose a type of statistics
+            if stats == 'mean':
+                values.append(np.mean(temps))
+            elif stats == 'bootstrap':
+                values.append(bootstrap_CI(temps))
+            elif stats == 't_distribution':
+                values.append(t_distribution_CI(temps))
+            elif stats == 'max':
+                values.append(max(temps))
+            else:
+                raise ValueError
+    
+    df[alg] = values
+return df
 
 def generate_distribution_histogram_one_instance(fname, values, bins = 'rice', title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, **kwargs):
     """
@@ -81,7 +134,7 @@ def shifted_geometric_mean(l, s):
         raise ValueError("The shift s should not be negative.")
     return gmean([v+s for v in l])-s
 
-def bootstrap_CI(l, N=10000, alpha=0.95):
+def bootstrap_CI(l, N=1000, alpha=0.95):
     """
     Compute the confidence interval of the sample mean using bootstrap.
     """

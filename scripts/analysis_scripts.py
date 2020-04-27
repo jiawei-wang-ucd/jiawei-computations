@@ -85,7 +85,7 @@ def bootstrap_CI(l, N=10000, alpha=0.95):
     """
     Compute the confidence interval of the sample mean using bootstrap.
     """
-    mean_list = [mean(np.random.choice(l,len(l),replace=True)) for i in xrange(N)]
+    mean_list = [np.mean(np.random.choice(l,len(l),replace=True)) for i in xrange(N)]
     return np.percentile(mean_list,(1-alpha)/2*100), np.percentile(mean_list,(1+alpha)/2*100)
 
 def t_distribution_CI(l, alpha=0.95):
@@ -93,7 +93,7 @@ def t_distribution_CI(l, alpha=0.95):
     Compute the confidence interval of the sample mean using t distribution.
     """
     n = len(l)
-    m = mean(l)
+    m = np.mean(l)
     std_err = sem(l)
     h = std_err * t.ppf((1 + alpha) / 2, n - 1)
     return m-h, m+h

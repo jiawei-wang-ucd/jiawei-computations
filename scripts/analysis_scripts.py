@@ -7,6 +7,18 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
+def shifted_gmean_df(df, s):
+    """
+    Return a data frame which computes shifted geometric mean.
+    """
+    new_df = pd.DataFrame()
+    new_df['metric'] = ["shifted_geometric_mean(shift={})".format(s)]
+    for col in df.columns:
+        if col == 'instances':
+            continue
+        new_df[col] = [shifted_geometric_mean(df[col],s = s)]
+    return new_df
+
 def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
     """
     Generate a data frame which reports cpu time or memory for one computation task.

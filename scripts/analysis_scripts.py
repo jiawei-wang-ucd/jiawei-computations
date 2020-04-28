@@ -7,6 +7,39 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
+def performance_profile_plot(df, time_out = 3600, tau_max = 100, log_scale = True):
+    """
+    Return a dataframe for plotting performance profile.
+    """
+    total_instances = df.shape[0]
+    best_time = df.min(axis = 1).to_list()
+    new_df = pd.DataFrame()
+    new_df['instances'] =  df['instances']
+    
+    def counttime(l,threshold):
+        return sum(1 if v<=threshold else 0 for v in l)
+    
+    for col in df.columns:
+        if col == 'instances':
+            continue
+        if log_scale:
+            new_df[col] = [math.log(df[col][i]/best_time[i]) if df[col][i] < time_out else math.log(tau_max) for i in range(len(best_time))]
+        else:
+            new_df[col] = [df[col][i]/best_time[i] if df[col][i] < time_out else tau_max for i in range(len(best_time))]
+    
+    plot_df = pd.DataFrame()
+    if log_scale:
+        X=[float(0+i*0.1) for i in range(int(math.log(tau_max)*10+1))]
+    else:
+        X=[float(1+i*0.1) for i in range((tau_max-1)*10+1)]
+    plot_df['tau'] = X
+    for col in df.columns:
+        if col == 'instances':
+            continue
+        plot_df[col] = [float(counttime(new_df[col], xx))/total_instances for xx in X]
+    return plot_df
+    
+
 def shifted_gmean_df(df, s):
     """
     Return a data frame which computes shifted geometric mean.

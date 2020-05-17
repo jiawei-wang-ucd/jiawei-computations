@@ -13,6 +13,7 @@ sage ./jiawei-computational-results/prerun.sage
 for p in ./jiawei-computational-results/results_datatable/*; do
     if [ -d ${p} ]; then
         find $p -maxdepth 1 -type f -name "*.csv" -delete
+        find $p -maxdepth 1 -type f -name "*.out" -delete
     fi
 done
 

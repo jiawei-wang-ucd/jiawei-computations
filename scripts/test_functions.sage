@@ -52,7 +52,7 @@ def maximal_additive_faces_generation(fn, method = 'branch_bound', search_method
         gc.collect()
         return max_add_faces
     elif method == 'branch_bound':
-        T = SubadditivityTestTree(fn)
+        T = SubadditivityTestTree(fn, use_symmetry = True)
         max_add_faces = T.generate_maximal_additive_faces(search_method = search_method, max_number_of_bkpts = lp_size, solver = solver)
         del T
         gc.collect()
@@ -79,7 +79,7 @@ def is_objective_goal_reached(fn, goal, method = 'branch_bound', search_method =
     if method == 'naive':
         return is_objective_goal_reached_naive(fn = fn, goal = goal)
     elif method == 'branch_bound':
-        T = SubadditivityTestTree(fn, objective_limit = goal)
+        T = SubadditivityTestTree(fn, objective_limit = goal, use_symmetry = True)
         is_sub = T.is_subadditive(stop_if_fail = True, cache_additive_vertices = False, search_method = search_method, max_number_of_bkpts = lp_size, solver = solver)
         del T
         gc.collect()
@@ -103,7 +103,7 @@ def minimum_of_delta_pi(fn, method = 'branch_bound', search_method = 'DFS', lp_s
     if method == 'naive':
         return minimum_of_delta_pi_naive(fn)
     elif method == 'branch_bound':
-        T = SubadditivityTestTree(fn)
+        T = SubadditivityTestTree(fn, use_symmetry = True)
         global_min = T.minimum(search_method = search_method, max_number_of_bkpts = lp_size, solver = solver)
         del T
         gc.collect()

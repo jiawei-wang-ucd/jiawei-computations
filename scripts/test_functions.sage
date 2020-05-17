@@ -84,6 +84,15 @@ def is_objective_goal_reached(fn, goal, method = 'branch_bound', search_method =
         del T
         gc.collect()
         return is_sub
+    elif method == 'mip':
+        if not hasattr(fn, 'mip'):
+            fn.mip = generate_mip_of_delta_pi_min_dlog(fn, solver = solver)
+        p=copy(fn.mip)
+        p.solver_parameter('CPX_PARAM_CUTUP', goal)
+        try:
+            p.solve()
+        except MIPSolverException:
+            return
     else:
         raise ValueError
 

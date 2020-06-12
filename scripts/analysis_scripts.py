@@ -102,6 +102,39 @@ def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
         df[alg] = values
     return df
 
+def generate_node_count_vs_threshold_plot(fname,fn,use_symmetry=False,**kwargs):
+    """
+    Generate a plot showing the number of nodes in the tree for different max_number_of_bkpts threshold.
+    """
+    node_count=[]
+    T=SubadditivityTestTree(fn,use_symmetry=use_symmetry)
+    m=T.minimum(max_number_of_bkpts=1000000000)
+    min_nodes=T.number_of_nodes()
+    for i in range(len(fn.end_points()*3)):
+        T=SubadditivityTestTree(fn,use_symmetry=use_symmetry)
+        m=T.minimum(max_number_of_bkpts=i)
+        nodes=T.number_of_nodes()
+        node_count.append(nodes)
+        if nodes == min_nodes:
+            break
+    plt.plot(node_count, **kwargs)
+    plt.xlabel('threshold for using LP estimators')
+    plt.ylabel('number of nodes in the tree')
+    plt.savefig(fname)
+    plt.close()
+
+def generate_benchmark_set_distribution(fname, file_path, bins = 'auto', **kwargs):
+    """
+    Generate and save a plot of the histogram of number of bkpts (sqrt scale) in the benchmark set.
+    """
+    all_files=glob.glob(file_path+'/*sobj')
+    bkpts=[round(sqrt(len(load(fi).end_points())),2) for fi in all_files]
+    plt.hist(bkpts, bins = bins, **kwargs)
+    plt.xlabel('number of breakpoints (sqrt scale)')
+    plt.ylabel('number of functions')
+    plt.savefig(fname)
+    plt.close()
+
 def generate_distribution_histogram_one_instance(fname, values, bins = 'rice', title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, **kwargs):
     """
     Generate and save a plot of the histogram of running time distribution.

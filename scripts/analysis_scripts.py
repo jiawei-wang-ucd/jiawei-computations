@@ -1,4 +1,5 @@
 import os
+import glob
 import numpy as np
 import pandas as pd
 import math
@@ -130,7 +131,7 @@ def generate_benchmark_set_distribution(fname, file_path, bins = 'auto', **kwarg
     all_files=glob.glob(file_path+'/*sobj')
     bkpts=[round(sqrt(len(load(fi).end_points())),2) for fi in all_files]
     plt.hist(bkpts, bins = bins, **kwargs)
-    plt.xlabel('number of breakpoints (sqrt scale)')
+    plt.xlabel('square root of total breakpoints')
     plt.ylabel('number of functions')
     plt.savefig(fname)
     plt.close()

@@ -48,12 +48,12 @@ def shifted_gmean_df(df, s):
         new_df[col] = [shifted_geometric_mean(df[col],s = s)]
     return new_df
 
-def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
+def generate_dataframe(path, metric = 'time', stats = 'arithmetic_mean', time_out = 3600):
     """
     Generate a data frame which reports cpu time or memory for one computation task.
     """
     df = pd.DataFrame()
-    algorithms = os.listdir(path)
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
     df['instances'] = instance_names
     for alg in algorithms:
@@ -62,6 +62,17 @@ def generate_dataframe(path, metric = 'time', stats = 'mean', time_out = 3600):
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
             # check if the csv file is empty.
             if temp_df.shape[0] == 0:
+                # if empty, check if it is due to out of memory of exceeding time limit.
+                log_file_name = path + '/' + alg + '/' + f + '.out'
+                v = None
+                with open(log_file_name) as mytxt:
+                    for line in mytxt:
+                        if 'memory' in line:
+                            v = 'OutOfMemory'
+                            break
+                if v is not None:
+                    values.append(v)
+                    continue
                 if metric == 'time':
                     values.append(time_out)
                 elif metric == 'memory':

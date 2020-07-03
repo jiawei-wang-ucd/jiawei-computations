@@ -254,36 +254,22 @@ def kurtosis_test_p_value(l):
     res = kurtosistest(l)
     return res.pvalue
 
-def plot_scatter(result_csv_file,input_file_path, solver1, solver2,subadditivity_only=False,log_plot=True):
+def plot_scatter(df, metric = 'time', time_out = 3600, memory_limit = 8):
     """
-    Scatter plot which represents the time ratio using two methods, the x_axis is #vertices/#additive vertices.
+    Scatter plot which represents the number of breakpoints vs time/memory.
     """
-    allFiles=glob.glob(os.path.join(input_file_path+'*naive.csv'))
-    df=pd.read_csv(result_csv_file)
-    additive_ratio=[]
-    time_ratio=[]
-    for f in allFiles:
-        with open(f,mode='r') as readfile:
-            function = csv.reader(readfile,delimiter=',', quoting=csv.QUOTE_MINIMAL)
-            for row in function:
-                name,te,pe,num_bkpts,num_v,num_addv=row[0],row[1],row[2],row[3],row[4],row[5]
-                break
-        if subadditivity_only and float(QQ(pe))>0:
-            continue
-        method1,lp1=solver1.split('_')
-        method2,lp2=solver2.split('_')
-        t1=df.loc[df['name']==name].loc[df['two_epsilon']==te].loc[df['p_epsilon']==pe].loc[df['node_selection']==method1].loc[df['lp_size']==lp1]['time(s)']
-        t2=df.loc[df['name']==name].loc[df['two_epsilon']==te].loc[df['p_epsilon']==pe].loc[df['node_selection']==method2].loc[df['lp_size']==lp2]['time(s)']
-        if len(t1)>0 and len(t2)>0:
-            additive_ratio.append(float(num_v)/float(num_addv))
-            time_ratio.append(float(t1)/float(t2))
-    plot_df=pd.DataFrame()
-    plot_df['additive_ratio']=additive_ratio
-    if log_plot:
-        plot_df['time_ratio']=[log(t) for t in time_ratio]
+    instances_info = pd.read_csv('./test_instances/test_instances_info.csv')
+    combined_df = df.merge(instances_info, left_on='instances', right_on='file name')
+    if metric == 'time':
+        for col in combined_df.columns:
+            combined_df[col] = [time_out if (v == 'TimeOut' or v == 'OutOfMemory') else v for v in combined_df[col]]
+    elif metric == 'memory':
+        for col in combined_df.columns:
+            combined_df[col] = [memory_limit if (v == 'TimeOut' or v == 'OutOfMemory') else v for v in combined_df[col]]
     else:
-        plot_df['time_ratio']=time_ratio
-    return plot_df
+        raise ValueError
+    #plt.savefig(fname)
+    return combined_df
 
 def plot_performance_profile_new(result_csv_file, input_file_path,methods,rm,subadditivity_only=False):
     """

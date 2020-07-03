@@ -40,8 +40,7 @@ test_instances_df['family'] = (base_function_family + two_slope_function_family)
 test_instances_df['parameters'] = (base_function_parameters + two_slope_function_parameters) * 3
 test_instances_df['two slope approximation'] = two_slope_approximation* 3
 test_instances_df['instance type'] = ['extreme'] * (len(base_function_family) + len(two_slope_function_family)) + ['minimal'] * (len(base_function_family) + len(two_slope_function_family)) + ['non subadditive'] * (len(base_function_family) + len(two_slope_function_family))
-
-test_instances_df.to_csv('./test_instances/test_instances_info.csv', index = False)
+test_instances_df['bkpts'] = [0]*len(list(test_instances_df['file name']))
 
 # generate test instances files (sage objects).
 
@@ -64,18 +63,21 @@ for i in range(len(base_function_family)):
     else:
         kwags = {base_function_parameters[i].split(':')[0]: QQ(base_function_parameters[i].split(':')[1])}
         fn = eval(base_function_family[i])(**kwags)
+    test_instances_df.loc[test_instances_df['file name'] == 'extreme_'+str(idx), 'bkpts'] = len(fn.end_points())
     save(fn, extreme_functions_path + 'extreme_'+str(idx))
 
     # minimal functions
     minimal_perturbation_function = gmic(f = find_f(fn))
 
     minimal_fn = convex_combination_coefficient * fn + (1 - convex_combination_coefficient) * minimal_perturbation_function
+    test_instances_df.loc[test_instances_df['file name'] == 'minimal_'+str(idx), 'bkpts'] = len(minimal_fn.end_points())
     save(minimal_fn, minimal_functions_path + 'minimal_'+str(idx))
 
     # non subadditive functions
     nonsub_perturbation_function = non_subadditive_function_example(f = find_f(fn))
 
     nonsub_fn = convex_combination_coefficient * fn + (1 - convex_combination_coefficient) * nonsub_perturbation_function
+    test_instances_df.loc[test_instances_df['file name'] == 'nonsub_'+str(idx), 'bkpts'] = len(nonsub_fn.end_points())
     save(nonsub_fn, non_subadditive_functions_path + 'nonsub_'+str(idx))
 
     idx+=1
@@ -93,18 +95,21 @@ for i in range(len(two_slope_function_family)):
         kwags = {two_slope_function_parameters[i].split(':')[0]: QQ(two_slope_function_parameters[i].split(':')[1])}
         fn = eval(two_slope_function_family[i])(**kwags)
     fn_2slope = two_slope_fill_in_extreme(fn, two_slope_fill_in_epsilon)
+    test_instances_df.loc[test_instances_df['file name'] == 'extreme_'+str(idx)+'_2s', 'bkpts'] = len(fn_2slope.end_points())
     save(fn_2slope, extreme_functions_path + 'extreme_'+str(idx)+'_2s')
 
     # minimal functions
     minimal_perturbation_function = gmic(f = find_f(fn))
 
     minimal_fn_2slope = convex_combination_coefficient * fn_2slope + (1 - convex_combination_coefficient) * minimal_perturbation_function
+    test_instances_df.loc[test_instances_df['file name'] == 'minimal_'+str(idx)+'_2s', 'bkpts'] = len(minimal_fn_2slope.end_points())
     save(minimal_fn_2slope, minimal_functions_path + 'minimal_'+str(idx)+'_2s')
 
     # non subadditive functions
     nonsub_perturbation_function = non_subadditive_function_example(f = find_f(fn))
 
     nonsub_fn_2slope = convex_combination_coefficient * fn_2slope + (1 - convex_combination_coefficient) * nonsub_perturbation_function
+    test_instances_df.loc[test_instances_df['file name'] == 'nonsub_'+str(idx)+'_2s', 'bkpts'] = len(nonsub_fn_2slope.end_points())
     save(nonsub_fn_2slope, non_subadditive_functions_path + 'nonsub_'+str(idx)+'_2s')
 
     idx+=1
@@ -113,6 +118,8 @@ for i in range(len(two_slope_function_family)):
     del minimal_fn_2slope
     del nonsub_fn_2slope
     gc.collect()
+
+test_instances_df.to_csv('./test_instances/test_instances_info.csv', index = False)
 
 # print summary
 n = len(base_function_family) + len(two_slope_function_family)

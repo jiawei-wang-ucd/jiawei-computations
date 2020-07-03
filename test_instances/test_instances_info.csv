@@ -1,151 +1,151 @@
-file name,family,parameters,two slope approximation,instance type
-extreme_1,chen_4_slope,f:7/10,N,extreme
-extreme_2,chen_4_slope,f:2/3,N,extreme
-extreme_3,drlm_backward_3_slope,f:1/10,N,extreme
-extreme_4,drlm_backward_3_slope,f:1/12,N,extreme
-extreme_5,gj_forward_3_slope,f:4/5,N,extreme
-extreme_6,gj_forward_3_slope,f:2/3,N,extreme
-extreme_7,kzh_3_slope_param_extreme_1,f:6/19,N,extreme
-extreme_8,kzh_3_slope_param_extreme_1,f:1/3,N,extreme
-extreme_9,kzh_3_slope_param_extreme_2,f:5/9,N,extreme
-extreme_10,kzh_3_slope_param_extreme_2,f:1/2,N,extreme
-extreme_11,kzh_4_slope_param_extreme_1,f:13/18,N,extreme
-extreme_12,kzh_4_slope_param_extreme_1,f:7/10,N,extreme
-extreme_13,kzh_5_slope_fulldim_2,,N,extreme
-extreme_14,kzh_5_slope_fulldim_covers_2,,N,extreme
-extreme_15,kzh_5_slope_q22_f10_1,,N,extreme
-extreme_16,kzh_6_slope_1,,N,extreme
-extreme_17,kzh_6_slope_fulldim_covers_2,,N,extreme
-extreme_18,kzh_6_slope_fulldim_covers_3,,N,extreme
-extreme_19,kzh_7_slope_1,,N,extreme
-extreme_20,kzh_7_slope_2,,N,extreme
-extreme_21,kzh_7_slope_3,,N,extreme
-extreme_22,kzh_7_slope_4,,N,extreme
-extreme_23,kzh_10_slope_1,,N,extreme
-extreme_24,kzh_28_slope_1,,N,extreme
-extreme_25,kzh_28_slope_2,,N,extreme
-extreme_26,bcdsp_arbitrary_slope,k:3,N,extreme
-extreme_27,bcdsp_arbitrary_slope,k:4,N,extreme
-extreme_28,bcdsp_arbitrary_slope,k:5,N,extreme
-extreme_29,bcdsp_arbitrary_slope,k:7,N,extreme
-extreme_30,bcdsp_arbitrary_slope,k:10,N,extreme
-extreme_31_2s,chen_4_slope,f:7/10,Y,extreme
-extreme_32_2s,chen_4_slope,f:2/3,Y,extreme
-extreme_33_2s,drlm_backward_3_slope,f:1/10,Y,extreme
-extreme_34_2s,drlm_backward_3_slope,f:1/12,Y,extreme
-extreme_35_2s,gj_forward_3_slope,f:4/5,Y,extreme
-extreme_36_2s,gj_forward_3_slope,f:2/3,Y,extreme
-extreme_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,extreme
-extreme_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,extreme
-extreme_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,extreme
-extreme_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,extreme
-extreme_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,extreme
-extreme_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,extreme
-extreme_43_2s,kzh_5_slope_fulldim_2,,Y,extreme
-extreme_44_2s,kzh_5_slope_fulldim_covers_2,,Y,extreme
-extreme_45_2s,kzh_6_slope_1,,Y,extreme
-extreme_46_2s,kzh_6_slope_fulldim_covers_2,,Y,extreme
-extreme_47_2s,kzh_6_slope_fulldim_covers_3,,Y,extreme
-extreme_48_2s,bcdsp_arbitrary_slope,k:3,Y,extreme
-extreme_49_2s,bcdsp_arbitrary_slope,k:4,Y,extreme
-extreme_50_2s,bcdsp_arbitrary_slope,k:5,Y,extreme
-minimal_1,chen_4_slope,f:7/10,N,minimal
-minimal_2,chen_4_slope,f:2/3,N,minimal
-minimal_3,drlm_backward_3_slope,f:1/10,N,minimal
-minimal_4,drlm_backward_3_slope,f:1/12,N,minimal
-minimal_5,gj_forward_3_slope,f:4/5,N,minimal
-minimal_6,gj_forward_3_slope,f:2/3,N,minimal
-minimal_7,kzh_3_slope_param_extreme_1,f:6/19,N,minimal
-minimal_8,kzh_3_slope_param_extreme_1,f:1/3,N,minimal
-minimal_9,kzh_3_slope_param_extreme_2,f:5/9,N,minimal
-minimal_10,kzh_3_slope_param_extreme_2,f:1/2,N,minimal
-minimal_11,kzh_4_slope_param_extreme_1,f:13/18,N,minimal
-minimal_12,kzh_4_slope_param_extreme_1,f:7/10,N,minimal
-minimal_13,kzh_5_slope_fulldim_2,,N,minimal
-minimal_14,kzh_5_slope_fulldim_covers_2,,N,minimal
-minimal_15,kzh_5_slope_q22_f10_1,,N,minimal
-minimal_16,kzh_6_slope_1,,N,minimal
-minimal_17,kzh_6_slope_fulldim_covers_2,,N,minimal
-minimal_18,kzh_6_slope_fulldim_covers_3,,N,minimal
-minimal_19,kzh_7_slope_1,,N,minimal
-minimal_20,kzh_7_slope_2,,N,minimal
-minimal_21,kzh_7_slope_3,,N,minimal
-minimal_22,kzh_7_slope_4,,N,minimal
-minimal_23,kzh_10_slope_1,,N,minimal
-minimal_24,kzh_28_slope_1,,N,minimal
-minimal_25,kzh_28_slope_2,,N,minimal
-minimal_26,bcdsp_arbitrary_slope,k:3,N,minimal
-minimal_27,bcdsp_arbitrary_slope,k:4,N,minimal
-minimal_28,bcdsp_arbitrary_slope,k:5,N,minimal
-minimal_29,bcdsp_arbitrary_slope,k:7,N,minimal
-minimal_30,bcdsp_arbitrary_slope,k:10,N,minimal
-minimal_31_2s,chen_4_slope,f:7/10,Y,minimal
-minimal_32_2s,chen_4_slope,f:2/3,Y,minimal
-minimal_33_2s,drlm_backward_3_slope,f:1/10,Y,minimal
-minimal_34_2s,drlm_backward_3_slope,f:1/12,Y,minimal
-minimal_35_2s,gj_forward_3_slope,f:4/5,Y,minimal
-minimal_36_2s,gj_forward_3_slope,f:2/3,Y,minimal
-minimal_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,minimal
-minimal_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,minimal
-minimal_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,minimal
-minimal_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,minimal
-minimal_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,minimal
-minimal_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,minimal
-minimal_43_2s,kzh_5_slope_fulldim_2,,Y,minimal
-minimal_44_2s,kzh_5_slope_fulldim_covers_2,,Y,minimal
-minimal_45_2s,kzh_6_slope_1,,Y,minimal
-minimal_46_2s,kzh_6_slope_fulldim_covers_2,,Y,minimal
-minimal_47_2s,kzh_6_slope_fulldim_covers_3,,Y,minimal
-minimal_48_2s,bcdsp_arbitrary_slope,k:3,Y,minimal
-minimal_49_2s,bcdsp_arbitrary_slope,k:4,Y,minimal
-minimal_50_2s,bcdsp_arbitrary_slope,k:5,Y,minimal
-nonsub_1,chen_4_slope,f:7/10,N,non subadditive
-nonsub_2,chen_4_slope,f:2/3,N,non subadditive
-nonsub_3,drlm_backward_3_slope,f:1/10,N,non subadditive
-nonsub_4,drlm_backward_3_slope,f:1/12,N,non subadditive
-nonsub_5,gj_forward_3_slope,f:4/5,N,non subadditive
-nonsub_6,gj_forward_3_slope,f:2/3,N,non subadditive
-nonsub_7,kzh_3_slope_param_extreme_1,f:6/19,N,non subadditive
-nonsub_8,kzh_3_slope_param_extreme_1,f:1/3,N,non subadditive
-nonsub_9,kzh_3_slope_param_extreme_2,f:5/9,N,non subadditive
-nonsub_10,kzh_3_slope_param_extreme_2,f:1/2,N,non subadditive
-nonsub_11,kzh_4_slope_param_extreme_1,f:13/18,N,non subadditive
-nonsub_12,kzh_4_slope_param_extreme_1,f:7/10,N,non subadditive
-nonsub_13,kzh_5_slope_fulldim_2,,N,non subadditive
-nonsub_14,kzh_5_slope_fulldim_covers_2,,N,non subadditive
-nonsub_15,kzh_5_slope_q22_f10_1,,N,non subadditive
-nonsub_16,kzh_6_slope_1,,N,non subadditive
-nonsub_17,kzh_6_slope_fulldim_covers_2,,N,non subadditive
-nonsub_18,kzh_6_slope_fulldim_covers_3,,N,non subadditive
-nonsub_19,kzh_7_slope_1,,N,non subadditive
-nonsub_20,kzh_7_slope_2,,N,non subadditive
-nonsub_21,kzh_7_slope_3,,N,non subadditive
-nonsub_22,kzh_7_slope_4,,N,non subadditive
-nonsub_23,kzh_10_slope_1,,N,non subadditive
-nonsub_24,kzh_28_slope_1,,N,non subadditive
-nonsub_25,kzh_28_slope_2,,N,non subadditive
-nonsub_26,bcdsp_arbitrary_slope,k:3,N,non subadditive
-nonsub_27,bcdsp_arbitrary_slope,k:4,N,non subadditive
-nonsub_28,bcdsp_arbitrary_slope,k:5,N,non subadditive
-nonsub_29,bcdsp_arbitrary_slope,k:7,N,non subadditive
-nonsub_30,bcdsp_arbitrary_slope,k:10,N,non subadditive
-nonsub_31_2s,chen_4_slope,f:7/10,Y,non subadditive
-nonsub_32_2s,chen_4_slope,f:2/3,Y,non subadditive
-nonsub_33_2s,drlm_backward_3_slope,f:1/10,Y,non subadditive
-nonsub_34_2s,drlm_backward_3_slope,f:1/12,Y,non subadditive
-nonsub_35_2s,gj_forward_3_slope,f:4/5,Y,non subadditive
-nonsub_36_2s,gj_forward_3_slope,f:2/3,Y,non subadditive
-nonsub_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,non subadditive
-nonsub_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,non subadditive
-nonsub_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,non subadditive
-nonsub_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,non subadditive
-nonsub_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,non subadditive
-nonsub_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,non subadditive
-nonsub_43_2s,kzh_5_slope_fulldim_2,,Y,non subadditive
-nonsub_44_2s,kzh_5_slope_fulldim_covers_2,,Y,non subadditive
-nonsub_45_2s,kzh_6_slope_1,,Y,non subadditive
-nonsub_46_2s,kzh_6_slope_fulldim_covers_2,,Y,non subadditive
-nonsub_47_2s,kzh_6_slope_fulldim_covers_3,,Y,non subadditive
-nonsub_48_2s,bcdsp_arbitrary_slope,k:3,Y,non subadditive
-nonsub_49_2s,bcdsp_arbitrary_slope,k:4,Y,non subadditive
-nonsub_50_2s,bcdsp_arbitrary_slope,k:5,Y,non subadditive
+file name,family,parameters,two slope approximation,instance type,bkpts
+extreme_1,chen_4_slope,f:7/10,N,extreme,11
+extreme_2,chen_4_slope,f:2/3,N,extreme,11
+extreme_3,drlm_backward_3_slope,f:1/10,N,extreme,5
+extreme_4,drlm_backward_3_slope,f:1/12,N,extreme,5
+extreme_5,gj_forward_3_slope,f:4/5,N,extreme,7
+extreme_6,gj_forward_3_slope,f:2/3,N,extreme,7
+extreme_7,kzh_3_slope_param_extreme_1,f:6/19,N,extreme,7
+extreme_8,kzh_3_slope_param_extreme_1,f:1/3,N,extreme,7
+extreme_9,kzh_3_slope_param_extreme_2,f:5/9,N,extreme,9
+extreme_10,kzh_3_slope_param_extreme_2,f:1/2,N,extreme,9
+extreme_11,kzh_4_slope_param_extreme_1,f:13/18,N,extreme,11
+extreme_12,kzh_4_slope_param_extreme_1,f:7/10,N,extreme,11
+extreme_13,kzh_5_slope_fulldim_2,,N,extreme,23
+extreme_14,kzh_5_slope_fulldim_covers_2,,N,extreme,19
+extreme_15,kzh_5_slope_q22_f10_1,,N,extreme,21
+extreme_16,kzh_6_slope_1,,N,extreme,43
+extreme_17,kzh_6_slope_fulldim_covers_2,,N,extreme,19
+extreme_18,kzh_6_slope_fulldim_covers_3,,N,extreme,19
+extreme_19,kzh_7_slope_1,,N,extreme,23
+extreme_20,kzh_7_slope_2,,N,extreme,29
+extreme_21,kzh_7_slope_3,,N,extreme,27
+extreme_22,kzh_7_slope_4,,N,extreme,25
+extreme_23,kzh_10_slope_1,,N,extreme,139
+extreme_24,kzh_28_slope_1,,N,extreme,395
+extreme_25,kzh_28_slope_2,,N,extreme,395
+extreme_26,bcdsp_arbitrary_slope,k:3,N,extreme,7
+extreme_27,bcdsp_arbitrary_slope,k:4,N,extreme,11
+extreme_28,bcdsp_arbitrary_slope,k:5,N,extreme,15
+extreme_29,bcdsp_arbitrary_slope,k:7,N,extreme,23
+extreme_30,bcdsp_arbitrary_slope,k:10,N,extreme,35
+extreme_31_2s,chen_4_slope,f:7/10,Y,extreme,2527
+extreme_32_2s,chen_4_slope,f:2/3,Y,extreme,1735
+extreme_33_2s,drlm_backward_3_slope,f:1/10,Y,extreme,1291
+extreme_34_2s,drlm_backward_3_slope,f:1/12,Y,extreme,399
+extreme_35_2s,gj_forward_3_slope,f:4/5,Y,extreme,85
+extreme_36_2s,gj_forward_3_slope,f:2/3,Y,extreme,205
+extreme_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,extreme,217
+extreme_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,extreme,6941
+extreme_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,extreme,1545
+extreme_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,extreme,1045
+extreme_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,extreme,2915
+extreme_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,extreme,2731
+extreme_43_2s,kzh_5_slope_fulldim_2,,Y,extreme,9861
+extreme_44_2s,kzh_5_slope_fulldim_covers_2,,Y,extreme,963
+extreme_45_2s,kzh_6_slope_1,,Y,extreme,7259
+extreme_46_2s,kzh_6_slope_fulldim_covers_2,,Y,extreme,315
+extreme_47_2s,kzh_6_slope_fulldim_covers_3,,Y,extreme,507
+extreme_48_2s,bcdsp_arbitrary_slope,k:3,Y,extreme,37
+extreme_49_2s,bcdsp_arbitrary_slope,k:4,Y,extreme,357
+extreme_50_2s,bcdsp_arbitrary_slope,k:5,Y,extreme,5829
+minimal_1,chen_4_slope,f:7/10,N,minimal,11
+minimal_2,chen_4_slope,f:2/3,N,minimal,11
+minimal_3,drlm_backward_3_slope,f:1/10,N,minimal,5
+minimal_4,drlm_backward_3_slope,f:1/12,N,minimal,5
+minimal_5,gj_forward_3_slope,f:4/5,N,minimal,7
+minimal_6,gj_forward_3_slope,f:2/3,N,minimal,7
+minimal_7,kzh_3_slope_param_extreme_1,f:6/19,N,minimal,7
+minimal_8,kzh_3_slope_param_extreme_1,f:1/3,N,minimal,7
+minimal_9,kzh_3_slope_param_extreme_2,f:5/9,N,minimal,9
+minimal_10,kzh_3_slope_param_extreme_2,f:1/2,N,minimal,9
+minimal_11,kzh_4_slope_param_extreme_1,f:13/18,N,minimal,11
+minimal_12,kzh_4_slope_param_extreme_1,f:7/10,N,minimal,11
+minimal_13,kzh_5_slope_fulldim_2,,N,minimal,23
+minimal_14,kzh_5_slope_fulldim_covers_2,,N,minimal,19
+minimal_15,kzh_5_slope_q22_f10_1,,N,minimal,21
+minimal_16,kzh_6_slope_1,,N,minimal,43
+minimal_17,kzh_6_slope_fulldim_covers_2,,N,minimal,19
+minimal_18,kzh_6_slope_fulldim_covers_3,,N,minimal,19
+minimal_19,kzh_7_slope_1,,N,minimal,23
+minimal_20,kzh_7_slope_2,,N,minimal,29
+minimal_21,kzh_7_slope_3,,N,minimal,27
+minimal_22,kzh_7_slope_4,,N,minimal,25
+minimal_23,kzh_10_slope_1,,N,minimal,139
+minimal_24,kzh_28_slope_1,,N,minimal,395
+minimal_25,kzh_28_slope_2,,N,minimal,395
+minimal_26,bcdsp_arbitrary_slope,k:3,N,minimal,7
+minimal_27,bcdsp_arbitrary_slope,k:4,N,minimal,11
+minimal_28,bcdsp_arbitrary_slope,k:5,N,minimal,15
+minimal_29,bcdsp_arbitrary_slope,k:7,N,minimal,23
+minimal_30,bcdsp_arbitrary_slope,k:10,N,minimal,35
+minimal_31_2s,chen_4_slope,f:7/10,Y,minimal,2527
+minimal_32_2s,chen_4_slope,f:2/3,Y,minimal,1735
+minimal_33_2s,drlm_backward_3_slope,f:1/10,Y,minimal,1291
+minimal_34_2s,drlm_backward_3_slope,f:1/12,Y,minimal,399
+minimal_35_2s,gj_forward_3_slope,f:4/5,Y,minimal,85
+minimal_36_2s,gj_forward_3_slope,f:2/3,Y,minimal,205
+minimal_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,minimal,217
+minimal_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,minimal,6941
+minimal_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,minimal,1545
+minimal_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,minimal,1045
+minimal_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,minimal,2915
+minimal_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,minimal,2731
+minimal_43_2s,kzh_5_slope_fulldim_2,,Y,minimal,9861
+minimal_44_2s,kzh_5_slope_fulldim_covers_2,,Y,minimal,963
+minimal_45_2s,kzh_6_slope_1,,Y,minimal,7259
+minimal_46_2s,kzh_6_slope_fulldim_covers_2,,Y,minimal,315
+minimal_47_2s,kzh_6_slope_fulldim_covers_3,,Y,minimal,507
+minimal_48_2s,bcdsp_arbitrary_slope,k:3,Y,minimal,37
+minimal_49_2s,bcdsp_arbitrary_slope,k:4,Y,minimal,357
+minimal_50_2s,bcdsp_arbitrary_slope,k:5,Y,minimal,5829
+nonsub_1,chen_4_slope,f:7/10,N,non subadditive,13
+nonsub_2,chen_4_slope,f:2/3,N,non subadditive,13
+nonsub_3,drlm_backward_3_slope,f:1/10,N,non subadditive,7
+nonsub_4,drlm_backward_3_slope,f:1/12,N,non subadditive,7
+nonsub_5,gj_forward_3_slope,f:4/5,N,non subadditive,9
+nonsub_6,gj_forward_3_slope,f:2/3,N,non subadditive,9
+nonsub_7,kzh_3_slope_param_extreme_1,f:6/19,N,non subadditive,9
+nonsub_8,kzh_3_slope_param_extreme_1,f:1/3,N,non subadditive,9
+nonsub_9,kzh_3_slope_param_extreme_2,f:5/9,N,non subadditive,11
+nonsub_10,kzh_3_slope_param_extreme_2,f:1/2,N,non subadditive,11
+nonsub_11,kzh_4_slope_param_extreme_1,f:13/18,N,non subadditive,13
+nonsub_12,kzh_4_slope_param_extreme_1,f:7/10,N,non subadditive,13
+nonsub_13,kzh_5_slope_fulldim_2,,N,non subadditive,25
+nonsub_14,kzh_5_slope_fulldim_covers_2,,N,non subadditive,21
+nonsub_15,kzh_5_slope_q22_f10_1,,N,non subadditive,23
+nonsub_16,kzh_6_slope_1,,N,non subadditive,45
+nonsub_17,kzh_6_slope_fulldim_covers_2,,N,non subadditive,21
+nonsub_18,kzh_6_slope_fulldim_covers_3,,N,non subadditive,21
+nonsub_19,kzh_7_slope_1,,N,non subadditive,25
+nonsub_20,kzh_7_slope_2,,N,non subadditive,29
+nonsub_21,kzh_7_slope_3,,N,non subadditive,29
+nonsub_22,kzh_7_slope_4,,N,non subadditive,27
+nonsub_23,kzh_10_slope_1,,N,non subadditive,141
+nonsub_24,kzh_28_slope_1,,N,non subadditive,397
+nonsub_25,kzh_28_slope_2,,N,non subadditive,397
+nonsub_26,bcdsp_arbitrary_slope,k:3,N,non subadditive,9
+nonsub_27,bcdsp_arbitrary_slope,k:4,N,non subadditive,13
+nonsub_28,bcdsp_arbitrary_slope,k:5,N,non subadditive,17
+nonsub_29,bcdsp_arbitrary_slope,k:7,N,non subadditive,25
+nonsub_30,bcdsp_arbitrary_slope,k:10,N,non subadditive,37
+nonsub_31_2s,chen_4_slope,f:7/10,Y,non subadditive,2527
+nonsub_32_2s,chen_4_slope,f:2/3,Y,non subadditive,1735
+nonsub_33_2s,drlm_backward_3_slope,f:1/10,Y,non subadditive,1293
+nonsub_34_2s,drlm_backward_3_slope,f:1/12,Y,non subadditive,401
+nonsub_35_2s,gj_forward_3_slope,f:4/5,Y,non subadditive,85
+nonsub_36_2s,gj_forward_3_slope,f:2/3,Y,non subadditive,205
+nonsub_37_2s,kzh_3_slope_param_extreme_1,f:6/19,Y,non subadditive,219
+nonsub_38_2s,kzh_3_slope_param_extreme_1,f:1/3,Y,non subadditive,6943
+nonsub_39_2s,kzh_3_slope_param_extreme_2,f:5/9,Y,non subadditive,1547
+nonsub_40_2s,kzh_3_slope_param_extreme_2,f:1/2,Y,non subadditive,1045
+nonsub_41_2s,kzh_4_slope_param_extreme_1,f:13/18,Y,non subadditive,2917
+nonsub_42_2s,kzh_4_slope_param_extreme_1,f:7/10,Y,non subadditive,2731
+nonsub_43_2s,kzh_5_slope_fulldim_2,,Y,non subadditive,9863
+nonsub_44_2s,kzh_5_slope_fulldim_covers_2,,Y,non subadditive,965
+nonsub_45_2s,kzh_6_slope_1,,Y,non subadditive,7261
+nonsub_46_2s,kzh_6_slope_fulldim_covers_2,,Y,non subadditive,317
+nonsub_47_2s,kzh_6_slope_fulldim_covers_3,,Y,non subadditive,509
+nonsub_48_2s,bcdsp_arbitrary_slope,k:3,Y,non subadditive,39
+nonsub_49_2s,bcdsp_arbitrary_slope,k:4,Y,non subadditive,359
+nonsub_50_2s,bcdsp_arbitrary_slope,k:5,Y,non subadditive,5831

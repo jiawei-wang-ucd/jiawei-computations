@@ -4,10 +4,166 @@ import numpy as np
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
-import scipy.stats; from scipy.stats import sem, t, kurtosis, kurtosistest, skew
+import pylab
+import scipy.stats as stats; from scipy.stats import sem, t, kurtosis, kurtosistest, skew, variation, levene, bartlett
 from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
+
+def MLE_fit_rejection_ratio(path, alpha = 0.05, distribution = 'norm'):
+    """
+    For a given distribution, fit the data and use KS test to verify goodness of fit. Return the ratio of rejections.
+    """
+    if distribution == 'norm':
+        dist = stats.norm
+    elif distribution == 'powerlognorm':
+        dist = stats.powerlognorm
+    elif distribution == 'cauchy':
+        dist = stats.cauchy
+    elif distribution == 'exponential':
+        dist = stats.expon
+    else:
+        raise ValueError
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    total = 0
+    rejections = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            if temp_df.shape[0] == 30:
+                total += 1
+                cputimes = list(temp_df['cputime(s)'])
+                # fit data
+                args=dist.fit(cputimes)
+                p = stats.kstest(cputimes, dist.cdf, args)[1]
+                if p < alpha:
+                    rejections += 1
+    return rejections, total, rejections * 1.0/total
+
+def different_variance_ratio(path, alpha = 0.05, parametric = False):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    total = 0
+    different_variance = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            if temp_df.shape[0] == 30:
+                total += 1
+                cputimes = list(temp_df['cputime(s)'])
+                walltimes = list(temp_df['walltime(s)'])
+                p = p_value_equal_variance(cputimes, walltimes, parametric = parametric, center = 'median')
+                if p < alpha:
+                    different_variance += 1
+    return different_variance, total, different_variance * 1.0/total
+
+def p_value_equal_variance(sample1, sample2, center = 'median', parametric = True):
+    """
+    Use Leneve's test to test equal variance of two samples with unknown distribution.
+    """
+    if parametric:
+        stat, p = bartlett(sample1, sample2)
+    else:
+        stat, p = levene(sample1, sample2, center = center)
+    return p
+
+def max_range(path, col = 'cputime(s)'):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    rng = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 30:
+                temp_rng = max(temp_df[col])-min(temp_df[col])
+                rng = max(temp_rng, rng)
+    return rng
+
+def large_wall_clock_time_variance_ratio(path):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    total = 0
+    large_variance = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 30:
+                total += 1
+                cputime_var = sample_variance(path + '/' + alg + '/' + f + '.csv', col = 'cputime(s)')
+                walltime_var = sample_variance(path + '/' + alg + '/' + f + '.csv', col = 'walltime(s)')
+                if cputime_var < walltime_var:
+                    large_variance += 1
+    return large_variance, total, large_variance * 1.0/total
+
+def positive_skew_ratio(path, col = 'cputime(s)'):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    total = 0
+    positive_skew = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 30:
+                total += 1
+                if sample_skew(path + '/' + alg + '/' + f + '.csv', col = col)>0:
+                    positive_skew += 1
+    return positive_skew, total, positive_skew * 1.0/total
+
+def positive_kurtosis_ratio(path, col = 'cputime(s)'):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    total = 0
+    positive_kurtosis = 0
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 30:
+                total += 1
+                if sample_kurtosis(path + '/' + alg + '/' + f + '.csv', col = col)>0:
+                    positive_kurtosis += 1
+    return positive_kurtosis, total, positive_kurtosis * 1.0/total
+
+def sample_variance(result_csv_file, col = 'cputime(s)'):
+    df = pd.read_csv(result_csv_file)
+    values = df[col]
+    return variation(values)
+
+def sample_skew(result_csv_file, col = 'cputime(s)'):
+    df = pd.read_csv(result_csv_file)
+    values = df[col]
+    return skew(values)
+
+def sample_kurtosis(result_csv_file, col = 'cputime(s)'):
+    df = pd.read_csv(result_csv_file)
+    values = df[col]
+    return kurtosis(values)
+
+def qqplot(fname, result_csv_file, col = 'cputime(s)'):
+    """
+    QQ plot to check normality assumption.
+    """
+    df = pd.read_csv(result_csv_file)
+    values = df[col]
+    stats.probplot(values, dist="norm", plot=pylab)
+    pylab.title('Q-Q plot')
+    pylab.savefig(fname)
 
 def performance_profile_plot(df, time_out = 3600, tau_max = 100, log_scale = True):
     """
@@ -172,7 +328,7 @@ def generate_distribution_histogram_one_instance(fname, values, bins = 'rice', t
     plt.savefig(fname)
     plt.close()
 
-def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
+def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, color = "black", title_name = None, title_size = None, xlabel_name = None, xlabel_size = None, ylabel_name = None, ylabel_size = None, x_ticks = None, log_plot = False, **kwargs):
     """
     Generate and save a plot for visualizing confidence intervals of data in one group/algorithm.
     Each value in x_values represents one test instance, and y_mean, y_upper, y_lower represent the mean, lower and upper limit of confidence interval respectively.
@@ -182,9 +338,9 @@ def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, title_
     assert n == len(y_upper)
     assert n == len(y_lower)
     assert n == len(y_mean)
-    y_values_lower = copy(y_lower)
-    y_values_upper = copy(y_upper)
-    y_values_mean = copy(y_mean)
+    y_values_lower = y_lower[:]
+    y_values_upper = y_upper[:]
+    y_values_mean = y_mean[:]
     if log_plot:
         y_values_lower = [float(log(v)) for v in y_values_lower]
         y_values_upper = [float(log(v)) for v in y_values_upper]
@@ -192,7 +348,7 @@ def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, title_
     err_lower = [y_values_mean[i] - y_values_lower[i] for i in range(n)]
     err_upper = [y_values_upper[i] - y_values_mean[i] for i in range(n)]
 
-    plt.errorbar(x=x_values, y=y_values_mean, yerr=[err_upper, err_lower], color="black", capsize=3, linestyle="None", marker="s", markersize=3, **kwargs)
+    plt.errorbar(x=x_values, y=y_values_mean, yerr=[err_upper, err_lower], color=color, capsize=3, linestyle="None", marker="s", markersize=3, **kwargs)
     if x_ticks is not None:
         assert n == len(x_ticks)
         plt.xticks(x_values, x_ticks)
@@ -214,13 +370,14 @@ def generate_plot_CI_one_group(fname, x_values, y_mean, y_upper, y_lower, title_
     plt.savefig(fname)
     plt.close()
 
-def shifted_geometric_mean(l, s):
+def shifted_geometric_mean(l, s, limit = 3600):
     """
     Compute the shifted geometric mean of a list l with shift s.
     """
     if s<0:
         raise ValueError("The shift s should not be negative.")
-    return gmean([v+s for v in l])-s
+    temp_l = [v if not isinstance(v, str) else limit for v in l]
+    return gmean([v+s for v in temp_l])-s
 
 def bootstrap_CI(l, N=1000, alpha=0.95):
     """
@@ -238,12 +395,6 @@ def t_distribution_CI(l, alpha=0.95):
     std_err = sem(l)
     h = std_err * t.ppf((1 + alpha) / 2, n - 1)
     return m-h, m+h
-
-def sample_skew(l):
-    return skew(l)
-
-def sample_kurtosis(l):
-    return kurtosis(l)
 
 def kurtosis_test_p_value(l):
     """

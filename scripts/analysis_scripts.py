@@ -2,6 +2,7 @@ import os
 import glob
 import numpy as np
 import pandas as pd
+import random
 import math
 import matplotlib.pyplot as plt
 import pylab
@@ -9,6 +10,69 @@ import scipy.stats as stats; from scipy.stats import sem, t, kurtosis, kurtosist
 from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
+
+def coverage_and_average_final_sample_size(path, col = 'cputime(s)', **kwargs):
+    df = pd.DataFrame()
+    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
+    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
+    df['instances'] = instance_names
+    cov = []
+    size = []
+    means = []
+    for alg in algorithms:
+        for f in instance_names:
+            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
+            # check if the csv file is empty.
+            if temp_df.shape[0] == 30:
+                data = list(temp_df[col])
+                true_mean, coverage, sample_size = bootstrap_coverage(data, **kwargs)
+                cov.append(coverage)
+                size.append(sample_size)
+                means.append(true_mean)
+    return cov, size, means
+
+def bootstrap_coverage(data, precision = 0.01, iteration = 100, pilot_size = 10, alpha = 0.95, distribution = "norm"):
+    """
+    Return the ratio of computed confidence interval covering the true mean, average sample size.
+    Given data from normal or lognormal distribution, relative precision, number of iterations, sampling size in pilot phase and confidence level.
+    """
+    covered = 0
+    res = []
+    for i in range(iteration):
+        temp_data = list(np.random.choice(data,pilot_size,replace=True))
+        if distribution == "lognorm":
+            sample_mean = np.mean(temp_data)
+            temp_data = [math.log(v) for v in temp_data]
+        k = pilot_size
+        m = np.mean(temp_data)
+        var = sem(temp_data)**2*k
+        while True:
+            if distribution == "norm":
+                h = math.sqrt(var/k) * t.ppf((1 + alpha) / 2, k - 1)
+                if h/m < precision:
+                    res.append((m,m-h,m+h,m,k))
+                    break
+                else:
+                    new_sample = random.choice(data)
+                    m, var = fast_mean_variance_update(new_sample, old_mean = m, old_variance = var, k=k)
+                    k+=1
+            elif distribution == "lognorm":
+                shift = var/2
+                h = t.ppf((1 + alpha) / 2, k - 1) * math.sqrt(var/k+var**2/2/(k+1))
+                half_width = (math.exp(m+shift+h) - math.exp(m+shift-h))/2
+                if half_width/math.exp(m+shift) < precision:
+                    res.append((math.exp(m+shift),math.exp(m+shift-h), math.exp(m+shift+h),sample_mean,k))
+                    break
+                else:
+                    new_sample = random.choice(data)
+                    sample_mean = (new_sample + k*sample_mean)/(k+1)
+                    m, var = fast_mean_variance_update(math.log(new_sample), old_mean = m, old_variance = var, k=k)
+                    k+=1
+            else:
+                raise ValueError
+    true_mean = sum(v[-2]*v[-1] for v in res)/sum(v[-1] for v in res)
+    coverage_ratio = sum(1 if true_mean>v[1] and true_mean<v[2] else 0 for v in res)*1.0/iteration
+    return true_mean, coverage_ratio, sum(v[-1] for v in res)/iteration
 
 def MLE_fit_rejection_ratio(path, alpha = 0.05, distribution = 'norm'):
     """
@@ -139,6 +203,14 @@ def positive_kurtosis_ratio(path, col = 'cputime(s)'):
                 if sample_kurtosis(path + '/' + alg + '/' + f + '.csv', col = col)>0:
                     positive_kurtosis += 1
     return positive_kurtosis, total, positive_kurtosis * 1.0/total
+
+def fast_mean_variance_update(new_sample, old_mean, old_variance, k):
+    """
+    Return the new mean and variance if one new sample is added.
+    """
+    new_mean = (k * old_mean + new_sample)/(k+1)
+    new_variance = (k-1) * old_variance / k + (new_sample - old_mean)**2/(k+1)
+    return new_mean, new_variance
 
 def sample_variance(result_csv_file, col = 'cputime(s)'):
     df = pd.read_csv(result_csv_file)

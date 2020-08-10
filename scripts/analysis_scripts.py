@@ -151,58 +151,34 @@ def max_range(path, col = 'cputime(s)'):
                 rng = max(temp_rng, rng)
     return rng
 
-def large_wall_clock_time_variance_ratio(path):
-    df = pd.DataFrame()
+def cputime_walltime_computation(path):
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
-    df['instances'] = instance_names
-    total = 0
-    large_variance = 0
+    res = []
     for alg in algorithms:
         for f in instance_names:
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
-            # check if the csv file is empty.
             if temp_df.shape[0] == 30:
-                total += 1
-                cputime_var = sample_variance(path + '/' + alg + '/' + f + '.csv', col = 'cputime(s)')
-                walltime_var = sample_variance(path + '/' + alg + '/' + f + '.csv', col = 'walltime(s)')
-                if cputime_var < walltime_var:
-                    large_variance += 1
-    return large_variance, total, large_variance * 1.0/total
+                cputime = temp_df['cputime(s)']
+                walltime = temp_df['walltime(s)']
+                cputime_var = variation(cputime)
+                walltime_var = variation(walltime)
+                res.append((cputime_var,walltime_var))
+    return res
 
-def positive_skew_ratio(path, col = 'cputime(s)'):
-    df = pd.DataFrame()
+def skew_kurtosis_computation(path, col = 'cputime(s)'):
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
-    df['instances'] = instance_names
-    total = 0
-    positive_skew = 0
+    s = []
+    k = []
     for alg in algorithms:
         for f in instance_names:
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
-            # check if the csv file is empty.
             if temp_df.shape[0] == 30:
-                total += 1
-                if sample_skew(path + '/' + alg + '/' + f + '.csv', col = col)>0:
-                    positive_skew += 1
-    return positive_skew, total, positive_skew * 1.0/total
-
-def positive_kurtosis_ratio(path, col = 'cputime(s)'):
-    df = pd.DataFrame()
-    algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
-    instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
-    df['instances'] = instance_names
-    total = 0
-    positive_kurtosis = 0
-    for alg in algorithms:
-        for f in instance_names:
-            temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
-            # check if the csv file is empty.
-            if temp_df.shape[0] == 30:
-                total += 1
-                if sample_kurtosis(path + '/' + alg + '/' + f + '.csv', col = col)>0:
-                    positive_kurtosis += 1
-    return positive_kurtosis, total, positive_kurtosis * 1.0/total
+                data = temp_df[col]
+                s.append(skew(data))
+                k.append(kurtosis(data))
+    return s, k
 
 def fast_mean_variance_update(new_sample, old_mean, old_variance, k):
     """
@@ -211,21 +187,6 @@ def fast_mean_variance_update(new_sample, old_mean, old_variance, k):
     new_mean = (k * old_mean + new_sample)/(k+1)
     new_variance = (k-1) * old_variance / k + (new_sample - old_mean)**2/(k+1)
     return new_mean, new_variance
-
-def sample_variance(result_csv_file, col = 'cputime(s)'):
-    df = pd.read_csv(result_csv_file)
-    values = df[col]
-    return variation(values)
-
-def sample_skew(result_csv_file, col = 'cputime(s)'):
-    df = pd.read_csv(result_csv_file)
-    values = df[col]
-    return skew(values)
-
-def sample_kurtosis(result_csv_file, col = 'cputime(s)'):
-    df = pd.read_csv(result_csv_file)
-    values = df[col]
-    return kurtosis(values)
 
 def qqplot(fname, result_csv_file, col = 'cputime(s)'):
     """

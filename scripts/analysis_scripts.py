@@ -107,24 +107,19 @@ def MLE_fit_rejection_ratio(path, alpha = 0.05, distribution = 'norm'):
                     rejections += 1
     return rejections, total, rejections * 1.0/total
 
-def different_variance_ratio(path, alpha = 0.05, parametric = False):
-    df = pd.DataFrame()
+def same_variance_p_value(path, alpha = 0.05, parametric = False):
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
-    df['instances'] = instance_names
-    total = 0
-    different_variance = 0
+    res = []
     for alg in algorithms:
         for f in instance_names:
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
             if temp_df.shape[0] == 30:
-                total += 1
                 cputimes = list(temp_df['cputime(s)'])
                 walltimes = list(temp_df['walltime(s)'])
                 p = p_value_equal_variance(cputimes, walltimes, parametric = parametric, center = 'median')
-                if p < alpha:
-                    different_variance += 1
-    return different_variance, total, different_variance * 1.0/total
+                res.append(p)
+    return res
 
 def p_value_equal_variance(sample1, sample2, center = 'median', parametric = True):
     """

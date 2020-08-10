@@ -11,9 +11,9 @@ if task_id:
     task_id = int(task_id)
 
 if task_id % 2 == 0:
-    dist = "normal"
+    dist = "norm"
 else:
-    dist = "lognormal"
+    dist = "lognorm"
 alg_id = task_id//2
 
 path = './computational-results-minimum/results_datatable'

@@ -74,38 +74,33 @@ def bootstrap_coverage(data, precision = 0.01, iteration = 100, pilot_size = 10,
     coverage_ratio = sum(1 if true_mean>v[1] and true_mean<v[2] else 0 for v in res)*1.0/iteration
     return true_mean, coverage_ratio, sum(v[-1] for v in res)/iteration
 
-def MLE_fit_rejection_ratio(path, alpha = 0.05, distribution = 'norm'):
+def MLE_fit_rejection_ratio(path, distribution = 'norm'):
     """
-    For a given distribution, fit the data and use KS test to verify goodness of fit. Return the ratio of rejections.
+    For a given distribution, fit the data and use KS test to verify goodness of fit. Return p values.
     """
     if distribution == 'norm':
         dist = stats.norm
-    elif distribution == 'powerlognorm':
-        dist = stats.powerlognorm
+    elif distribution == 'lognorm':
+        dist = stats.lognorm
     elif distribution == 'cauchy':
         dist = stats.cauchy
     elif distribution == 'exponential':
         dist = stats.expon
     else:
         raise ValueError
-    df = pd.DataFrame()
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
-    df['instances'] = instance_names
-    total = 0
-    rejections = 0
+    res = []
     for alg in algorithms:
         for f in instance_names:
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
             if temp_df.shape[0] == 30:
-                total += 1
                 cputimes = list(temp_df['cputime(s)'])
                 # fit data
-                args=dist.fit(cputimes)
+                args = dist.fit(cputimes)
                 p = stats.kstest(cputimes, dist.cdf, args)[1]
-                if p < alpha:
-                    rejections += 1
-    return rejections, total, rejections * 1.0/total
+                res.append(p)
+    return res
 
 def same_variance_p_value(path, alpha = 0.05, parametric = False):
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]

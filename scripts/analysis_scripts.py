@@ -11,7 +11,7 @@ from scipy.stats.mstats import gmean
 
 np.random.seed(9001)
 
-def coverage_and_average_final_sample_size(path, col = 'cputime(s)', **kwargs):
+def coverage_and_average_final_sample_size(path, col = 'cputime(s)', min_time_threshold = 10, **kwargs):
     df = pd.DataFrame()
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]
     instance_names = [f[:-4] for f in os.listdir(path+"/"+algorithms[0]) if f.endswith('.csv')]
@@ -23,7 +23,7 @@ def coverage_and_average_final_sample_size(path, col = 'cputime(s)', **kwargs):
         for f in instance_names:
             temp_df = pd.read_csv(path + '/' + alg + '/' + f + '.csv')
             # check if the csv file is empty.
-            if temp_df.shape[0] == 30:
+            if temp_df.shape[0] == 30 and max(temp_df[col]) > min_time_threshold:
                 data = list(temp_df[col])
                 true_mean, coverage, sample_size = bootstrap_coverage(data, **kwargs)
                 cov.append(coverage)

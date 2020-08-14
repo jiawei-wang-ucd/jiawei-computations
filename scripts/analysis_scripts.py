@@ -86,6 +86,22 @@ def MLE_fit_rejection_ratio(path, distribution = 'norm'):
         dist = stats.cauchy
     elif distribution == 'exponential':
         dist = stats.expon
+    elif distribution == 'f':
+        dist = stats.f
+    elif distribution == 't':
+        dist = stats.t
+    elif distribution == 'chi':
+        dist = stats.chi
+    elif distribution == 'chi2':
+        dist = stats.chi2
+    elif distribution == 'foldnorm':
+        dist = stats.foldnorm
+    elif distribution == 'truncnorm':
+        dist = stats.truncnorm
+    elif distribution == 'foldcauchy':
+        dist = stats.foldcauchy
+    elif distribution == 'halfcauchy':
+        dist = stats.halfcauchy
     else:
         raise ValueError
     algorithms = [f for f in os.listdir(path) if not f.startswith('.')]

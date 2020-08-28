@@ -1,5 +1,5 @@
 # jiawei-computations
-Top-level repository for computational paper
+Top-level repository for the computational project in Jiawei Wang's PhD thesis "Subadditivity of Piecewise Linear Functions".
 
 Repository for reproducible benchmarking of studying subadditivity slack (delta pi) of cut generating functions in a High Performance Cluster (HPC) using the slurm batch queue manager.
 Contribution and feedback are very welcome!

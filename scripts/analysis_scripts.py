@@ -41,8 +41,10 @@ def bootstrap_coverage(data, precision = 0.01, iteration = 100, pilot_size = 10,
     for i in range(iteration):
         temp_data = list(np.random.choice(data,pilot_size,replace=True))
         if distribution == "lognorm":
+            args = stats.lognorm.fit(data)
+            loc = max(0, args[1])
             sample_mean = np.mean(temp_data)
-            temp_data = [math.log(v) for v in temp_data]
+            temp_data = [math.log(v-loc) for v in temp_data]
         k = pilot_size
         m = np.mean(temp_data)
         var = sem(temp_data)**2*k
@@ -60,13 +62,13 @@ def bootstrap_coverage(data, precision = 0.01, iteration = 100, pilot_size = 10,
                 shift = var/2
                 h = t.ppf((1 + alpha) / 2, k - 1) * math.sqrt(var/k+var**2/2/(k+1))
                 half_width = (math.exp(m+shift+h) - math.exp(m+shift-h))/2
-                if half_width/math.exp(m+shift) < precision:
-                    res.append((math.exp(m+shift),math.exp(m+shift-h), math.exp(m+shift+h),sample_mean,k))
+                if half_width/(math.exp(m+shift)+loc) < precision:
+                    res.append((math.exp(m+shift)+loc,math.exp(m+shift-h)+loc, math.exp(m+shift+h)+loc,sample_mean,k))
                     break
                 else:
                     new_sample = random.choice(data)
                     sample_mean = (new_sample + k*sample_mean)/(k+1)
-                    m, var = fast_mean_variance_update(math.log(new_sample), old_mean = m, old_variance = var, k=k)
+                    m, var = fast_mean_variance_update(math.log(new_sample-loc), old_mean = m, old_variance = var, k=k)
                     k+=1
             else:
                 raise ValueError
@@ -113,7 +115,10 @@ def MLE_fit_rejection_ratio(path, distribution = 'norm'):
             if temp_df.shape[0] == 30:
                 cputimes = list(temp_df['cputime(s)'])
                 # fit data
-                args = dist.fit(cputimes)
+                if distribution == 'lognorm':
+                    args = dist.fit(cputimes, floc = 0)
+                else:
+                    args = dist.fit(cputimes)
                 p = stats.kstest(cputimes, dist.cdf, args)[1]
                 res.append(p)
     return res
